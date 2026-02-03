@@ -1,0 +1,4466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RRB ALP 2025 - Full Test 15</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2196F3;
+            --primary-dark: #1976D2;
+            --secondary: #42A5F5;
+            --accent: #64B5F6;
+            --light-blue: #E3F2FD;
+            --dark: #1565C0;
+            --light: #FFFFFF;
+            --gray: #9E9E9E;
+            --success: #4CAF50;
+            --warning: #FFC107;
+            --danger: #F44336;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        body {
+            background: var(--light);
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            padding-bottom: 70px;
+            position: relative;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .navbar {
+            background: var(--primary);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 0.8rem;
+        }
+
+        .navbar-brand {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white !important;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .navbar-brand i {
+            font-size: 1.1rem;
+        }
+
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .timer {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: white;
+        }
+
+        .nav-action-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .nav-action-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .nav-action-btn.submit-btn {
+            background: #4CAF50;
+        }
+
+        .nav-action-btn.submit-btn:hover {
+            background: #43A047;
+        }
+
+        .option-card.attempted {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        /* Modern Welcome Screen */
+        .welcome-screen {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 2.5rem;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+        }
+
+        .test-info-card {
+            background: linear-gradient(145deg, #ffffff, #f8faff);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(33, 150, 243, 0.1);
+            box-shadow: 0 10px 30px rgba(33, 150, 243, 0.05);
+        }
+
+        .test-info-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid rgba(33, 150, 243, 0.1);
+        }
+
+        .test-info-header i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            background: rgba(33, 150, 243, 0.1);
+            padding: 1rem;
+            border-radius: 16px;
+        }
+
+        .test-info-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .test-info-body {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid rgba(33, 150, 243, 0.1);
+        }
+
+        .info-item i {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .info-item div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-item span {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .info-item label {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin: 0;
+        }
+
+        .instructions-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(33, 150, 243, 0.1);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .instructions-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(33, 150, 243, 0.1);
+        }
+
+        .instructions-header i {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .instructions-header h4 {
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .instructions-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1rem;
+            padding: 0;
+        }
+
+        .instruction-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: #f8faff;
+            border-radius: 12px;
+            border: 1px solid rgba(33, 150, 243, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .instruction-item:hover {
+            transform: translateX(5px);
+            background: white;
+            border-color: var(--primary);
+        }
+
+        .instruction-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+            color: white;
+            background: var(--primary);
+        }
+
+        .instruction-icon.success { background: #4CAF50; }
+        .instruction-icon.danger { background: #F44336; }
+        .instruction-icon.warning { background: #FFC107; }
+        .instruction-icon.info { background: #2196F3; }
+
+        .instruction-text {
+            font-size: 1rem;
+            color: #2c3e50;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        .start-test-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            width: 100%;
+            padding: 1rem;
+            margin-top: 2rem;
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
+        }
+
+        .start-test-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(33, 150, 243, 0.4);
+        }
+
+        .start-test-btn i {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .welcome-screen {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+
+            .test-info-body {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .info-item {
+                padding: 0.8rem;
+            }
+
+            .info-item i {
+                font-size: 1.2rem;
+            }
+
+            .info-item span {
+                font-size: 1.1rem;
+            }
+
+            .instructions-grid {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+
+            .instruction-item {
+                padding: 0.8rem;
+            }
+
+            .instruction-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            .instruction-text {
+                font-size: 0.9rem;
+            }
+
+            .start-test-btn {
+                padding: 0.8rem;
+                font-size: 1rem;
+            }
+        }
+
+        .question-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1rem auto;
+            max-width: 900px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--golden);
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .option-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 1rem 1rem 1rem 3rem;
+            margin: 0.8rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+
+        .option-card:hover {
+            background: var(--light-blue);
+            transform: translateX(5px);
+            border-color: var(--primary);
+        }
+
+        .option-card::before {
+            content: attr(data-option);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2.5rem;
+            height: 100%;
+            background: var(--light-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--primary);
+            border-radius: 9px 0 0 9px;
+        }
+
+        .option-card.selected {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .option-card.correct {
+            background: rgba(0, 200, 83, 0.2);
+            border-color: var(--success);
+        }
+
+        .option-card.incorrect {
+            background: rgba(213, 0, 0, 0.2);
+            border-color: var(--danger);
+        }
+
+        .question-box {
+            background: var(--light-blue);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .question-box::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: linear-gradient(to bottom, var(--primary), var(--golden));
+            border-radius: 20px 0 0 20px;
+        }
+
+        .stats-mini {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .stats-mini-item {
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .stats-mini-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .stats-mini-value {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .stats-mini-label {
+            font-size: 0.8rem;
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-top: 1px solid rgba(33, 150, 243, 0.1);
+        }
+
+        .nav-btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            min-width: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: none;
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(33, 150, 243, 0.15);
+            background: var(--primary);
+            color: white;
+        }
+
+        .nav-btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .nav-btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: white;
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.7;
+            transform: none;
+            cursor: not-allowed;
+            background: #f5f5f5;
+            color: #999;
+            border-color: #ddd;
+            box-shadow: none;
+        }
+
+        .question-number {
+            font-size: 1rem;
+            color: var(--gray);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: var(--dark);
+            margin-bottom: 2rem;
+        }
+
+        .status-badge {
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+            gap: 0.5rem;
+            padding: 1rem;
+        }
+
+        .grid-btn {
+            aspect-ratio: 1;
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            background: white;
+            color: var(--primary);
+        }
+
+        .grid-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .grid-btn.btn-success {
+            background: var(--success);
+        }
+
+        .grid-btn.btn-warning {
+            background: var(--warning);
+            color: var(--dark);
+        }
+
+        .grid-btn.btn-primary {
+            background: var(--accent);
+        }
+
+        .modal-content {
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid var(--golden);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(75, 54, 33, 0.9) 100%);
+            color: var(--golden);
+            border-radius: 15px 15px 0 0;
+            padding: 1.2rem;
+            border-bottom: 1px solid var(--golden);
+        }
+
+        .modal-title {
+            font-weight: 600;
+            font-size: 1.3rem;
+        }
+
+        .btn-close {
+            filter: brightness(0) invert(1);
+        }
+
+        .stats-card {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 12px;
+            padding: 1.2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--golden);
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .stats-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--golden);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .stats-label {
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+            padding: 0 1rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stats-card {
+            flex: 1;
+            min-width: 180px;
+            background: #f8f9ff;
+            border: 1px solid #eef0f7;
+            border-radius: 10px;
+            padding: 0.8rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.2s ease;
+        }
+
+        .instruction-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            padding: 1.2rem;
+            background: #f8f9ff;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .instruction-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #eef0f7;
+        }
+
+        .instruction-icon {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .instruction-text {
+            font-size: 0.9rem;
+            color: #475569;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 13px;
+                padding-bottom: 60px;
+            }
+            
+            .nav-btn {
+                padding: 0.5rem 1rem;
+                min-width: auto;
+                font-size: 0.8rem;
+            }
+            
+            .nav-btn span {
+                display: none;
+            }
+            
+            .welcome-screen, .question-card {
+                margin: 0.8rem;
+                padding: 1.2rem;
+            }
+
+            .stats-mini {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .stats-mini-item {
+                flex: 1 1 auto;
+                min-width: 100px;
+            }
+
+            .option-card {
+                padding: 0.8rem 0.8rem 0.8rem 2.5rem;
+                font-size: 0.85rem;
+            }
+
+            .bottom-nav {
+                padding: 0.8rem;
+            }
+            .stats-container {
+                padding: 0 0.5rem;
+                gap: 0.8rem;
+                flex-wrap: wrap;
+            }
+            
+            .stats-card {
+                min-width: 140px;
+                padding: 0.6rem;
+                gap: 0.6rem;
+            }
+            
+            .stats-card i {
+                font-size: 1rem;
+                width: 30px;
+                height: 30px;
+            }
+            
+            .stats-value {
+                font-size: 0.9rem;
+            }
+            
+            .stats-label {
+                font-size: 0.7rem;
+            }
+
+            .instruction-grid {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+                padding: 1rem;
+            }
+            
+            .instruction-item {
+                padding: 0.7rem;
+            }
+            
+            .instruction-icon {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .instruction-text {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Modern Result Display */
+        .score-animation {
+            background: white;
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin: 2rem auto;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .score-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--success) 100%);
+        }
+
+        .score-value {
+            font-size: 4.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+            padding: 0 1rem;
+        }
+
+        .stat-item {
+            background: linear-gradient(145deg, #ffffff, #f8faff);
+            border-radius: 20px;
+            padding: 1.8rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(33, 150, 243, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .wrong-answers-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(33, 150, 243, 0.1);
+        }
+
+        .wrong-answer-card {
+            background: linear-gradient(145deg, #ffffff, #f8faff);
+            border-radius: 16px;
+            padding: 1.8rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(33, 150, 243, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .wrong-answer-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .wrong-answer, .correct-answer {
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .grid-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .stats-mini {
+                padding: 0.8rem;
+            }
+            
+            .stats-mini-item {
+                padding: 0 0.5rem;
+            }
+            
+            .stats-mini-value {
+                font-size: 1.2rem;
+            }
+            
+            .wrong-answer-card {
+                padding: 1rem;
+                margin: 0.5rem;
+            }
+            
+            .score-value {
+                font-size: 3rem;
+            }
+        }
+
+        .modal-content {
+            background: white;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .modal-header {
+            background: white;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #eef0f7;
+        }
+
+        .modal-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .modal-title i {
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+            gap: 0.5rem;
+            padding: 1rem;
+        }
+
+        .grid-btn {
+            aspect-ratio: 1;
+            border: 1px solid #eef0f7;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+            background: white;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .grid-btn:hover {
+            background: #f8f9ff;
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .grid-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .grid-btn.answered {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border-color: #a5d6a7;
+        }
+
+        .grid-btn.marked {
+            background: #fff3e0;
+            color: #f57c00;
+            border-color: #ffcc80;
+        }
+
+        .grid-legend {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 1rem;
+            border-top: 1px solid #eef0f7;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        .legend-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .question-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin: 1rem auto;
+            max-width: 800px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #eef0f7;
+        }
+
+        .question-number {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .question-number i {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .question-status {
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .question-box {
+            background: #f8f9ff;
+            border-radius: 10px;
+            padding: 1.2rem;
+            margin-bottom: 1.2rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #2c3e50;
+            line-height: 1.6;
+            border: 1px solid #eef0f7;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .option-card {
+            background: white;
+            border: 1px solid #eef0f7;
+            border-radius: 8px;
+            padding: 0.8rem 0.8rem 0.8rem 2.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #475569;
+            display: flex;
+            align-items: center;
+        }
+
+        .option-card:hover {
+            background: #f8f9ff;
+            border-color: var(--primary);
+            transform: translateX(3px);
+        }
+
+        .option-card::before {
+            content: attr(data-option);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2.2rem;
+            height: 100%;
+            background: #f8f9ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.9rem;
+            border-right: 1px solid #eef0f7;
+        }
+
+        .option-card.selected {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .option-card.selected::before {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-right: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .option-card.correct {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border-color: #a5d6a7;
+        }
+
+        .option-card.incorrect {
+            background: #ffebee;
+            color: #c62828;
+            border-color: #ef9a9a;
+        }
+
+        @media (max-width: 768px) {
+            .questions-grid {
+                grid-template-columns: repeat(auto-fill, minmax(35px, 1fr));
+                gap: 0.4rem;
+                padding: 0.8rem;
+            }
+
+            .grid-btn {
+                font-size: 0.8rem;
+            }
+
+            .question-box {
+                padding: 1rem;
+                font-size: 0.95rem;
+            }
+
+            .option-card {
+                padding: 0.7rem 0.7rem 0.7rem 2.5rem;
+                font-size: 0.85rem;
+            }
+
+            .option-card::before {
+                width: 2rem;
+                font-size: 0.85rem;
+            }
+
+            .legend-item {
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Add new styles at the end */
+        
+        /* Modern Disclaimer */
+        .disclaimer-alert {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border: 1px solid rgba(33, 150, 243, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .disclaimer-alert::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: linear-gradient(to bottom, #2196F3, #1976D2);
+        }
+
+        .disclaimer-icon {
+            font-size: 2rem;
+            color: #2196F3;
+            flex-shrink: 0;
+        }
+
+        .disclaimer-content h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .disclaimer-content p {
+            color: #505c6d;
+            line-height: 1.6;
+        }
+
+        .disclaimer-content a {
+            color: #2196F3;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .disclaimer-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Join Channel Modal */
+        #joinChannelModal .modal-content {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        #joinChannelModal .modal-header {
+            background: linear-gradient(45deg, #2196F3, #1976D2);
+            border: none;
+            padding: 1.5rem;
+        }
+
+        #joinChannelModal .btn-close {
+            color: white;
+            opacity: 1;
+            filter: brightness(0) invert(1);
+        }
+
+        #joinChannelModal .modal-body {
+            padding: 2rem;
+        }
+
+        #joinChannelModal .btn-primary {
+            background: linear-gradient(45deg, #2196F3, #1976D2);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        #joinChannelModal .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+        }
+
+        /* Modern Navigation Buttons */
+        .nav-action-btn {
+            border: 1px solid #e2e8f0;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-action-btn:hover {
+            transform: translateY(-2px);
+            border-color: #2196F3;
+            color: #2196F3;
+        }
+
+        .nav-action-btn.submit-btn {
+            background: linear-gradient(45deg, #2196F3, #1976D2);
+            border: none;
+            color: white;
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+        }
+
+        .nav-action-btn.submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+        }
+
+        /* Question Navigation Grid */
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+            gap: 0.8rem;
+            padding: 1.2rem;
+        }
+
+        .grid-btn {
+            aspect-ratio: 1;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            background: white;
+            color: #4a5568;
+        }
+
+        .grid-btn:hover {
+            background: #f8f9fa;
+            border-color: #2196F3;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 10px rgba(33, 150, 243, 0.1);
+        }
+
+        .grid-btn.active {
+            background: #2196F3;
+            color: white;
+            border-color: #2196F3;
+            box-shadow: 0 2px 10px rgba(33, 150, 243, 0.2);
+        }
+
+        .grid-btn.answered {
+            background: #48bb78;
+            color: white;
+            border-color: #48bb78;
+        }
+
+        .grid-btn.marked {
+            background: #ecc94b;
+            color: #744210;
+            border-color: #ecc94b;
+        }
+
+        /* Wrong Answers Display */
+        .wrong-answer-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid #eef0f7;
+        }
+
+        .wrong-answer-card .question-text {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eef0f7;
+        }
+
+        .wrong-answer, .correct-answer {
+            padding: 1rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .wrong-answer {
+            background: #fff5f5;
+            color: #e53e3e;
+        }
+
+        .correct-answer {
+            background: #f0fff4;
+            color: #38a169;
+        }
+
+        .wrong-answer i, .correct-answer i {
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .alert-primary {
+                padding: 1rem;
+                margin: 0.5rem;
+            }
+
+            .nav-action-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .grid-btn {
+                font-size: 0.8rem;
+            }
+
+            .wrong-answer-card {
+                padding: 1rem;
+                margin: 0.5rem;
+            }
+
+            .wrong-answer, .correct-answer {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a href="https://whatsapp.com/channel/0029VbAvDSX0QeahEg4kkE3U" target="_blank" class="navbar-brand">
+                <i class="fas fa-graduation-cap"></i>
+                RRB ALP 2025 - Full Test 15</a>
+            <!-- Before test starts -->
+            <div class="navbar-actions" id="pre-test-actions">
+                <a href="https://t.me/prooexxbaby" target="_blank" class="nav-action-btn website-btn">
+                    <i class="fas fa-globe"></i>
+                    Contact
+                </a>
+            </div>
+            <!-- After test starts -->
+            <div class="navbar-actions" id="test-actions" style="display: none;">
+                <div class="timer" id="timer">
+                    <i class="far fa-clock me-2"></i>00:00:00
+                </div>
+                <button class="nav-action-btn overview-btn" onclick="showQuestionsGrid()">
+                    <i class="fas fa-th"></i>
+                    Overview
+                </button>
+                <button class="nav-action-btn submit-btn" onclick="confirmSubmit()">
+                    <i class="fas fa-paper-plane"></i>
+                    Submit
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Join Channel Popup -->
+    <div class="modal fade" id="joinChannelModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center p-4">
+                    <div class="mb-4">
+                        <i class="fas fa-robot fa-4x" style="color: var(--primary)"></i>
+                    </div>
+                    <h3 class="mb-3">JOIN -- 𝙼𝙰𝙳𝚇 𝐕𝐈𝐏 𝐒𝐓𝐔𝐃𝐘 ×͜×</h3>
+                    <p class="text-muted mb-4">Get access to more free tests and study materials!</p>
+                    <a href="https://whatsapp.com/channel/0029VbAvDSX0QeahEg4kkE3U" target="_blank" class="btn btn-primary btn-lg w-100 rounded-pill">
+                        <i class="fab fa-telegram me-2"></i>Join Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Welcome Screen (Enhanced) -->
+    <div class="welcome-screen" id="welcome-screen">
+        <div class="welcome-header">
+            <div class="welcome-icon">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="welcome-title">
+                <h2>RRB ALP 2025 - Full Test 15</h2>
+                <p>Powered by <a href="https://whatsapp.com/channel/0029VbAvDSX0QeahEg4kkE3U" target="_blank">𝙼𝙰𝙳𝚇 𝐕𝐈𝐏 𝐒𝐓𝐔𝐃𝐘 ×͜×</a></p>
+            </div>
+        </div>
+
+        <!-- Modern Disclaimer -->
+        <div class="disclaimer-alert mb-4">
+            <div class="disclaimer-content">
+                <div class="disclaimer-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    Important Notice
+                </div>
+                <div class="disclaimer-text">
+                    <p class="mb-2">🎯 This test series is provided <strong>FREE</strong> by <a href="https://whatsapp.com/channel/0029VbAvDSX0QeahEg4kkE3U" target="_blank">𝙼𝙰𝙳𝚇 𝐕𝐈𝐏 𝐒𝐓𝐔𝐃𝐘 ×͜×</a></p>
+                    <p class="mb-2">📚 Prepare better, Score higher with our curated test series!</p>
+                    <div class="disclaimer-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            High Quality Questions
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            Detailed Solutions
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            Real Exam Pattern
+                        </div>
+                    </div>
+                    <hr>
+                    <p class="small text-muted mb-0">
+                        Content belongs to respective institutes. This is an unofficial version for practice only.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-info-card mb-4">
+            <div class="test-info-header">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>RRB ALP 2025 - Full Test 15</h3>
+            </div>
+            <div class="test-info-body">
+                <div class="info-item">
+                    <i class="fas fa-question-circle"></i>
+                    <div>
+                        <span id="total-questions">0</span>
+                        <label>Questions</label>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <span>180</span>
+                        <label>Minutes</label>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-star"></i>
+                    <div>
+                        <span id="total-marks">0</span>
+                        <label>Total Marks</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="instructions-card">
+            <div class="instructions-header">
+                <i class="fas fa-info-circle"></i>
+                <h4>Test Instructions</h4>
+            </div>
+            <div class="instructions-grid">
+                <div class="instruction-item">
+                    <div class="instruction-icon success">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="instruction-text">
+                        Each correct answer earns positive marks
+                    </div>
+                </div>
+                <div class="instruction-item">
+                    <div class="instruction-icon danger">
+                        <i class="fas fa-minus"></i>
+                    </div>
+                    <div class="instruction-text">
+                        Wrong answers have negative marking
+                    </div>
+                </div>
+                <div class="instruction-item">
+                    <div class="instruction-icon warning">
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                    <div class="instruction-text">
+                        You can change answers before final submission
+                    </div>
+                </div>
+                <div class="instruction-item">
+                    <div class="instruction-icon info">
+                        <i class="fas fa-bookmark"></i>
+                    </div>
+                    <div class="instruction-text">
+                        Mark important questions for review
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="start-test-btn" onclick="startTest()">
+            <i class="fas fa-play"></i>
+            Start Test
+        </button>
+    </div>
+
+    <!-- Test Content -->
+    <div id="test-content" style="display: none;">
+        <div class="container py-4">
+            <!-- Stats Mini Section (Modified to show only total and attempted) -->
+            <div class="stats-mini">
+                <div class="stats-mini-item">
+                    <div class="stats-mini-icon" style="background: var(--primary)">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div>
+                        <div class="stats-mini-value" id="mini-total">0/0</div>
+                        <div class="stats-mini-label">Total Questions</div>
+                    </div>
+                </div>
+                <div class="stats-mini-item">
+                    <div class="stats-mini-icon" style="background: var(--success)">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div>
+                        <div class="stats-mini-value" id="mini-attempted">0</div>
+                        <div class="stats-mini-label">Attempted</div>
+                    </div>
+                </div>
+                <div class="stats-mini-item">
+                    <div class="stats-mini-icon" style="background: var(--warning)">
+                        <i class="fas fa-minus-circle"></i>
+                    </div>
+                    <div>
+                        <div class="stats-mini-value" id="mini-skipped">0</div>
+                        <div class="stats-mini-label">Skipped</div>
+                    </div>
+                </div>
+            </div>
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">
+                        <i class="fas fa-pencil-alt"></i>
+                        Question <span id="current-question">1</span> of <span id="total-questions">0</span>
+                    </div>
+                    <div class="question-status" id="question-status"></div>
+                </div>
+                <div class="question-box" id="question-container"></div>
+                <div class="options-container" id="options-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav" id="bottom-nav" style="display: none;">
+        <button class="nav-btn nav-btn-outline" onclick="prevQuestion()" id="prev-btn">
+            <i class="fas fa-chevron-left"></i>
+            <span>Previous</span>
+        </button>
+        <button class="nav-btn nav-btn-primary" onclick="markForReview()" id="review-btn">
+            <i class="fas fa-bookmark"></i>
+            <span>Review</span>
+        </button>
+        <button class="nav-btn nav-btn-outline" onclick="nextQuestion()" id="next-btn">
+            <i class="fas fa-chevron-right"></i>
+            <span>Next</span>
+        </button>
+    </div>
+
+    <!-- Questions Grid Modal -->
+    <div class="modal fade" id="questionsModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-th"></i>
+                        Questions Overview
+                    </h5>
+                    <button type="button" class="btn-close-modern" data-bs-dismiss="modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="questions-grid" id="questions-grid"></div>
+                    <div class="grid-legend">
+                        <div class="legend-item">
+                            <div class="legend-dot" style="background: var(--primary)"></div>
+                            <span>Current</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-dot" style="background: #2e7d32"></div>
+                            <span>Answered</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-dot" style="background: #f57c00"></div>
+                            <span>Marked</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add this modal HTML before closing body tag -->
+    <div class="modal fade" id="submitConfirmModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title">
+                        <i class="fas fa-paper-plane text-primary me-2"></i>
+                        Submit Test
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="submit-stats mb-4">
+                        <div class="submit-stat-item">
+                            <div class="submit-stat-icon bg-success">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="submit-stat-info">
+                                <div class="submit-stat-value" id="submit-attempted">0</div>
+                                <div class="submit-stat-label">Attempted</div>
+                            </div>
+                        </div>
+                        <div class="submit-stat-item">
+                            <div class="submit-stat-icon bg-warning">
+                                <i class="fas fa-bookmark"></i>
+                            </div>
+                            <div class="submit-stat-info">
+                                <div class="submit-stat-value" id="submit-marked">0</div>
+                                <div class="submit-stat-label">Marked for Review</div>
+                            </div>
+                        </div>
+                        <div class="submit-stat-item">
+                            <div class="submit-stat-icon bg-danger">
+                                <i class="fas fa-times"></i>
+                            </div>
+                            <div class="submit-stat-info">
+                                <div class="submit-stat-value" id="submit-unattempted">0</div>
+                                <div class="submit-stat-label">Not Attempted</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-warning mb-4">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        Are you sure you want to submit? You cannot change your answers after submission.
+                    </div>
+                    <div class="d-flex justify-content-end gap-2">
+                        <button type="button" class="btn btn-light px-4" data-bs-dismiss="modal">
+                            <i class="fas fa-times me-2"></i>
+                            Cancel
+                        </button>
+                        <button type="button" class="btn btn-primary px-4" onclick="finalSubmit()">
+                            <i class="fas fa-check me-2"></i>
+                            Submit Test
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Initialize variables
+        let currentQuestion = 0;
+        let answers = {};
+        let markedForReview = {};
+        let submitted = false;
+        let testStarted = false;
+        let startTime = null;
+        let endTime = null;
+        
+        // Load questions data
+        const questions = [
+  {
+    "question_no": 1,
+    "section": "CBT",
+    "question": "<p>The average age of a family of 6 members was found. After 2 years, the grandfather dies and after 2 years a child is born, resulting in a decrease of 9 years in the average age of the family. Find at what age the grandfather died.</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "3",
+    "correct_answer": "C",
+    "solution": "<p>The correct answer is <strong>option 3</strong> i.e. <strong>76.</strong></p> <p>Let the age of the grandfather be x years</p> <p>and</p> <p>the sum of the ages of the remaining 5 members is y years</p> <p>Average = (x + y)/6 ...(1)</p> <p>After 2 years grandfather dies and after 2 years a child is born, so after 4 years, the age of the remaining 5 members increases by 4 years,</p> <p>New Average age of family when baby is born = (y + 4 × 5)/6 = (y + 20)/6 ...(2)</p> <p>According to the question,</p> <p>⇒ {(x + y)/6} - {(y + 20)/6} = 9</p> <p>⇒ x + y - y - 20 = 54</p> <p>⇒ x - 20 = 54</p> <p>⇒ x = 74</p> <p>The age at which grandfather died = 74 + 2 = 76 years</p>",
+    "option_1": "<p>72</p>",
+    "option_image_1": "",
+    "option_2": "<p>74</p>",
+    "option_image_2": "",
+    "option_3": "<p>76</p>",
+    "option_image_3": "",
+    "option_4": "<p>78</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 2,
+    "section": "CBT",
+    "question": "<p>The length of the rectangle increases by 44% whereas its breadth increases by 25%. What is the ratio of the new area of the rectangle and the old area of the rectangle?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "4",
+    "correct_answer": "D",
+    "solution": "<p>The correct answer is <strong>Option 4</strong> i.e<strong>. 9 : 5</strong>.</p> <p>Let the old values of length and breadth be x and y respectively</p> <p>Old area = Length × Breadth</p> <p>⇒ xy</p> <p>New length = (100 + 44) /100 × x = 1.44x</p> <p>New breadth = (100 + 25) /100 × y = 1.25y</p> <p>New area = 1.44x × 1.25y = 1.8xy</p> <p>Ratio of new area and old area = (1.8xy): (xy)</p> <p>⇒ 9 : 5</p>",
+    "option_1": "<p>6 : 5</p>",
+    "option_image_1": "",
+    "option_2": "<p>7 : 5</p>",
+    "option_image_2": "",
+    "option_3": "<p>8 : 5</p>",
+    "option_image_3": "",
+    "option_4": "<p>9 : 5</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 3,
+    "section": "CBT",
+    "question": "<p>When a product is sold at an 8% discount, the selling price is Rs 2944. By what percent should marked price be increased so that after a 20% discount, the selling price is Rs 2800.</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "4",
+    "correct_answer": "D",
+    "solution": "<p>The correct answer is <strong>option 4</strong> i.e. <strong>9.375%.</strong></p> <p>Let the Marked price be x</p> <p>(100 - 8)% of x = 2944</p> <p><span style=\"font-size:12.0pt\">⇒ </span>x = (2944 × 100)/92 = Rs 3200</p> <p>Selling price = Rs 2800</p> <p>Discount rate = 20%</p> <p>(100 - 20)% of New Marked price = 2800</p> <p>80/100 × New Marked price = 2800</p> <p>New Marked price = 3500</p> <p>Increase in marked price = 3500 - 3200 = Rs 300</p> <p>Hence,</p> <p>Percentage increase = (300/3200) × 100 = 9.375%</p>",
+    "option_1": "<p>8.225%</p>",
+    "option_image_1": "",
+    "option_2": "<p>8.625%</p>",
+    "option_image_2": "",
+    "option_3": "<p>10.125%</p>",
+    "option_image_3": "",
+    "option_4": "<p>9.375%</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 4,
+    "section": "CBT",
+    "question": "<p>A tank consists of one inlet, one outlet pipe, and a hole. The Inlet pipe fills the tank in 5 hours, the outlet pipe empties the tank in 15 hours and the hole can empty the tank in 30 hours. Find the time taken to fill the tank when all of them are open together.</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "1",
+    "correct_answer": "A",
+    "solution": "<p>The correct answer is <strong>Option 1 </strong>i.e. <strong>10 hours.</strong></p> <p>Time taken by inlet pipe = 5 hours</p> <p>Time taken by outlet pipe = 15 hours</p> <p>Time taken by the hole = 30 hours</p> <p>Part of tank filled by inlet pipe in one hour = 1/5</p> <p>Part of tank emptied by outlet pipe in one hour = 1/15</p> <p>Part of tank emptied by the hole in one hour = 1/3</p> <p>Let all of them take x hours to fill the tank.</p> <p>Part of tank filled when all are open together in 1 hour = 1/x</p> <p>⇒ 1/5 - 1/15 - 1/30 = 1/x</p> <p>⇒ x = 10 hours</p>",
+    "option_1": "<p>10 hours</p>",
+    "option_image_1": "",
+    "option_2": "<p>12 hours</p>",
+    "option_image_2": "",
+    "option_3": "<p>15 hours</p>",
+    "option_image_3": "",
+    "option_4": "<p>21 hours</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 5,
+    "section": "CBT",
+    "question": "<p>A and B can complete a piece of work in 12 days, B and C can do in 15 days and C and A in 20 days. Find the total time taken by C, if he/she completes the whole work alone.</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "1",
+    "correct_answer": "A",
+    "solution": "<p>The correct answer is <strong>option 1</strong> i.e. <strong>60 days</strong>.</p> <p>A + B = 12 days</p> <p>B + C = 15 days</p> <p>C + A = 20 days</p> <p>Total work = LCM of 12, 15 and 20 = 60 units</p> <p>(A + B)&#39;s efficiency = 60/12 = 5 .....(i)</p> <p>(B + C)&#39;s efficiency = 60/15 = 4 .......(ii)</p> <p>(A + C)&#39;s efficiency = 60/20 = 3 ...(iii)</p> <p>Add (i), (ii) and (iii)</p> <p>2(A + B + C) = 5 + 4 + 3</p> <p>⇒ (A + B + C)&#39;s efficiency = 12/2 = 6</p> <p>⇒ (5 + C)&#39;s efficiency = 6 [from eq (i)]</p> <p>⇒ C&#39;s efficiency = 6 - 5 = 1</p> <p>Time required for C = Total work/Efficiency of C</p> <p>= 60/1 = 60 days</p>",
+    "option_1": "<p>60 days</p>",
+    "option_image_1": "",
+    "option_2": "<p>45 days</p>",
+    "option_image_2": "",
+    "option_3": "<p>30 days</p>",
+    "option_image_3": "",
+    "option_4": "<p>100 days</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 6,
+    "section": "CBT",
+    "question": "<p>A truck is 400 meters ahead of a car on a highway. What should be the speed of the car to overtake the truck moving at a speed of 54 km/h in 20 seconds? (The length of the car and truck is negligible)</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "3",
+    "correct_answer": "C",
+    "solution": "<p>The correct answer is<strong> option 3 </strong>i.e.<strong> 35 m/s.</strong></p> <p>Distance to be covered = 400m</p> <p>Speed of the truck = 54 km/h or 54 × 5/18 = 15 m/s</p> <p>Time taken = 20 seconds</p> <p>Let the speed of the car be &#39;x&#39; m/s</p> <p>Relative speed in same direction = x - 15</p> <p>Speed = distance/time</p> <p>⇒ 400/20 = (x - 15)</p> <p>⇒ 20 = x - 15</p> <p>⇒ x = 35 m/s</p>",
+    "option_1": "<p>27 m/s</p>",
+    "option_image_1": "",
+    "option_2": "<p>25 m/s</p>",
+    "option_image_2": "",
+    "option_3": "<p>35 m/s</p>",
+    "option_image_3": "",
+    "option_4": "<p>30 m/s</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 7,
+    "section": "CBT",
+    "question": "<p>What will be the amount after 4 years at a simple interest rate of 10% where the principal is 500$?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "3",
+    "correct_answer": "C",
+    "solution": "<p>The correct answer is <strong>option 3</strong> i.e. <strong>700$.</strong></p> <p>Simple Interest = (Principal × time × rate of interest)/100</p> <p>⇒ SI = (500 × 4 × 10)/100</p> <p>⇒ 200$</p> <p>Amount = (500 + 200) = 700$</p>",
+    "option_1": "<p>600$</p>",
+    "option_image_1": "",
+    "option_2": "<p>560$</p>",
+    "option_image_2": "",
+    "option_3": "<p>700$</p>",
+    "option_image_3": "",
+    "option_4": "<p>800$</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 8,
+    "section": "CBT",
+    "question": "<p>Three brothers A, B & C starting a business with investing some amount. A invest Rs. 720, B invest Rs. 900 & C invest Rs. 2700. After 6 months C withdraw Rs. 1800. Find their profit ratio after a year.</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "4",
+    "correct_answer": "D",
+    "solution": "<p>The correct answer is <strong>option 4 </strong>i.e. <strong>4 : 5 : 10</strong>.</p> <p>Profit = investment sum × time period</p> <p>Let the profit of A</p> <p>= 720 × 12 </p> <p>the profit of B</p> <p>= 900 × 12</p> <p>the profit of C</p> <p>= (2700 × 6) + (900 × 6)</p> <p>Ratio of their profit</p> <p>= 720 × 12 : 900 × 12 : 3600 × 6</p> <p>= 72 : 90 : 180</p> <p>= 4 : 5 : 10</p>",
+    "option_1": "<p>8 : 5 : 20</p>",
+    "option_image_1": "",
+    "option_2": "<p>12 : 10 : 21</p>",
+    "option_image_2": "",
+    "option_3": "<p>4 : 15 : 10</p>",
+    "option_image_3": "",
+    "option_4": "<p>4 : 5 : 10</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 9,
+    "section": "CBT",
+    "question": "<p>In the given figure, from an external point C, tangents CA and CB are drawn to a circle with center O. If &ang;AOB = 220° (bigger arc of the circle), then find &ang;CAB.</p> <p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/Screenshot 2024-11-10 2136002024_11_10_21_36_42.png\" style=\"height:114px; width:250px\" /></p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "3",
+    "correct_answer": "C",
+    "solution": "<p>The correct answer is<strong> option 3</strong> i.e. <strong>70°.</strong></p> <p>The angle between</p> <p>radius and tangent is 90&ordm;</p> <p>&ang;AOB = 220° (bigger arc of the circle)</p> <p>so Smaller arc of the circle = 360&ordm; - bigger arc = 360&ordm; - 220° = 140°</p> <p>In triangle AOB</p> <p>&ang;OAB = &ang;OBA = (180° - 140°)/2 = 20°</p> <p>(AO = OB = Radius)</p> <p>&ang;CAO = 90&ordm;</p> <p>So,</p> <p>&ang;CAB = &ang;CAO - &ang;OAB</p> <p>&ang;CAB = (90&ordm; - 20°) = 70°</p>",
+    "option_1": "<p> 50°</p>",
+    "option_image_1": "",
+    "option_2": "<p> 60°</p>",
+    "option_image_2": "",
+    "option_3": "<p> 70°</p>",
+    "option_image_3": "",
+    "option_4": "<p> 80°</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 10,
+    "section": "CBT",
+    "question": "<p>Find the value of (sin 1110°/cot 780°).</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "4",
+    "correct_answer": "D",
+    "solution": "<p>The correct answer is <strong>Option 4 </strong>i.e. <strong>&radic;3/2.</strong></p> <p>We know that </p> <p><span style=\"font-size:11.0pt\">⇒ </span>sin (n&pi; + &theta;) = sin &theta;</p> <p><span style=\"font-size:11.0pt\">⇒ </span>cot (n&pi; + &theta;) = cot &theta;</p> <p><span style=\"font-size:11.0pt\">⇒ </span>sin 1110°/cot 780°</p> <p><span style=\"font-size:11.0pt\">⇒ </span>sin (360° × 3 + 30°)/(cot 360° × 2 + 60°)</p> <p><span style=\"font-size:11.0pt\">⇒ </span>sin 30°/cot 60°</p> <p><span style=\"font-size:11.0pt\">⇒ </span>(1/2)/(1<span style=\"font-family:Calibri,sans-serif\"><span style=\"font-size:14.6667px\">/</span></span><span style=\"font-size:11.0pt\">&radic;3) </span></p> <p><span style=\"font-size:11.0pt\">⇒ &radic;3/2</span></p>",
+    "option_1": "<p>1/&radic;3</p>",
+    "option_image_1": "",
+    "option_2": "<p>(&radic;3 + 1)/2</p>",
+    "option_image_2": "",
+    "option_3": "<p>(&radic;3 - 1)/2</p>",
+    "option_image_3": "",
+    "option_4": "<p>&radic;3/2</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 11,
+    "section": "CBT",
+    "question": "<p>A 48 m length of wire is moulded to form a square. What is the area of the square made by joining the midpoints of the square?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "4",
+    "correct_answer": "D",
+    "solution": "<p>The correct answer is <strong>option 4</strong> i.e. <strong>72 cm<sup>2</sup></strong>.</p> <p>The length of the side of the square = 48/4 = 12 cm</p> <p>Length of a side of new square = &radic;(6<sup>2</sup> + 6<sup>2</sup>) = 6&radic;2 cm</p> <p>Area = side<sup>2</sup> = (6&radic;2)<sup>2</sup> = 72 cm<sup>2</sup></p>",
+    "option_1": "<p>36 cm<sup>2</sup></p>",
+    "option_image_1": "",
+    "option_2": "<p>144 cm<sup>2</sup></p>",
+    "option_image_2": "",
+    "option_3": "<p>108 cm<sup>2</sup></p>",
+    "option_image_3": "",
+    "option_4": "<p>72 cm<sup>2</sup></p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 12,
+    "section": "CBT",
+    "question": "<p>Find the sum of roots of equation, 3x<sup>2</sup> - 4x + 7 = 0.</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "1",
+    "correct_answer": "A",
+    "solution": "<p>The correct answer is <strong>Option 1</strong> i.e.<strong> 4/3.</strong></p> <p>3x<sup>2</sup> - 4x + 7 = 0</p> <p>We know that,</p> <p>Sum of roots of quadratic equation ax<sup>2</sup> + bx + c = 0 = -b/a</p> <p>Here, a = 3, b = -4, c = 7. </p> <p>So,</p> <p>Sum of roots of 3x<sup>2</sup> - 4x + 7 = 0 = -(-4)/3 = 4/3</p>",
+    "option_1": "<p>4/3</p>",
+    "option_image_1": "",
+    "option_2": "<p>-4/3</p>",
+    "option_image_2": "",
+    "option_3": "<p>7/3</p>",
+    "option_image_3": "",
+    "option_4": "<p>-7/3</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 13,
+    "section": "CBT",
+    "question": "<p>Which of the following fractions is greatest?</p> <p>17/19, 21/23, 15/17, 31/33, 19/21</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "4",
+    "correct_answer": "D",
+    "solution": "<p>The correct answer is <strong>option 4</strong> i.e. <strong>31/33</strong>.</p> <p>If the difference between the numerator and denominator of the fraction is equal then the fraction with the greater numerator is the greatest fraction. </p> <p>Given fractions are</p> <p>17/19, 21/23, 15/17, 31/33, 19/21</p> <p>As, the difference between the numerator and denominator of all fractions are equal </p> <p>and 31 > 21 > 19 > 17 > 15</p> <p>The greatest numerator value is 31 So, the 31/33 will be the greatest fraction.</p>",
+    "option_1": "<p>17/19</p>",
+    "option_image_1": "",
+    "option_2": "<p>21/23</p>",
+    "option_image_2": "",
+    "option_3": "<p>19/21</p>",
+    "option_image_3": "",
+    "option_4": "<p>31/33</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 14,
+    "section": "CBT",
+    "question": "<p><span style=\"font-size:14px\">The value of <span class=\"math-tex\">\(0.5\overline{6} - 0.7\overline{23}+0.3\overline{9} \times0.\overline{8}\)</span> is?</span></p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "1",
+    "correct_answer": "A",
+    "solution": "<p><span style=\"font-size:14px\">The correct answer is <strong>option 1</strong> i.e. <span class=\"math-tex\">\(0.1\overline{54}\)</span></span></p> <p><span style=\"font-size:14px\"><span class=\"math-tex\">\(=0.5\overline{6} - 0.7\overline{23}+0.3\overline{9} \times0.\overline{8} \\=0.5\overline{6}-0.7\overline{23}+0.\overline{31} \\ =0.8\overline{7}-0.7\overline{23} \\ = 0.1\overline{54}\)</span></span></p>",
+    "option_1": "<p><span class=\"math-tex\">\(0.1\overline{54}\)</span></p>",
+    "option_image_1": "",
+    "option_2": "<p><span class=\"math-tex\">\(0.\overline{154}\)</span></p>",
+    "option_image_2": "",
+    "option_3": "<p><span class=\"math-tex\">\(0.\overline{158 }\)</span></p>",
+    "option_image_3": "",
+    "option_4": "<p><span class=\"math-tex\">\(0.1\overline{58}\)</span></p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 15,
+    "section": "CBT",
+    "question": "<p>What is the value of (40 - 3/4 of 32)/[37 - 3/4 of (34 - 6)]?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "1",
+    "correct_answer": "A",
+    "solution": "<p>The correct answer is <strong>Option 1</strong> i.e. <strong>1.</strong></p> <p>⇒ (40 - 3/4 of 32)/[37 - 3/4 of (34 - 6)]</p> <p>⇒ (40 - 24)/[37 - 21]</p> <p>⇒ 16/16 = 1</p>",
+    "option_1": "<p>1</p>",
+    "option_image_1": "",
+    "option_2": "<p>0</p>",
+    "option_image_2": "",
+    "option_3": "<p>-<span class=\"math-tex\">\(\frac{1}{2}\)</span></p>",
+    "option_image_3": "",
+    "option_4": "<p><span class=\"math-tex\">\(\frac{1}{2}\)</span></p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 16,
+    "section": "CBT",
+    "question": "<p>In a solution of alcohol and 180 ml of water, if the ratio of alcohol to water is 5 : 4, then what is the amount of alcohol present in the solution?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "3",
+    "correct_answer": "C",
+    "solution": "<p>The correct answer is <strong>option 3</strong> i.e. <strong>100 ml.</strong></p> <p>Let the quantity of alcohol and water be 5x and 4x respectively.</p> <p>⇒ 5x + 4x = 180</p> <p>⇒ 9x = 180</p> <p>⇒ x = 20</p> <p>⇒ 5(20) = 100 ml</p>",
+    "option_1": "<p>120 ml</p>",
+    "option_image_1": "",
+    "option_2": "<p>90 ml</p>",
+    "option_image_2": "",
+    "option_3": "<p>100 ml</p>",
+    "option_image_3": "",
+    "option_4": "<p>80 ml</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 17,
+    "section": "CBT",
+    "question": "<p>Find the time in which C will complete the work alone, if D alone can complete the work in 20 days.</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "3",
+    "correct_answer": "C",
+    "solution": "<p>The correct answer is <strong>option 3</strong> i.e. <strong>12 days.</strong></p> <p>From the pie chart:</p> <p>Ratio of wages received by A, B, C and D = 16 : 20 : 40 : 24 = 4 : 5 : 10 : 6</p> <p>We know that the ratio of wages shared will be equal to the ratio of their efficiencies.</p> <p>So,</p> <p>Ratio of efficiencies of C and D = 10 : 6</p> <p>Since, efficiency and time are inversely proportional:</p> <p>Ratio of time in which C and D will finish the work working alone = 6 : 10</p> <p>Now, D alone can complete the work in 20 days.</p> <p>So,</p> <p>Time taken by C to complete the work alone = 20 × 6/10 = 12 days</p>",
+    "option_1": "<p>15 days</p>",
+    "option_image_1": "",
+    "option_2": "<p>10 days</p>",
+    "option_image_2": "",
+    "option_3": "<p>12 days</p>",
+    "option_image_3": "",
+    "option_4": "<p>18 days</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 18,
+    "section": "CBT",
+    "question": "<p>Find the ratio of time in which A, B, C and D will finish the work individually.</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "2",
+    "correct_answer": "B",
+    "solution": "<p>The correct answer is <strong>option 2</strong> i.e. <strong>15 : 12 : 6 : 10.</strong></p> <p>From the pie chart:</p> <p>The ratio of wages received by A, B, C, and D = 16 : 20 : 40 : 24 = 4 : 5 : 10 : 6</p> <p>We know that the ratio of wages shared will be equal to the ratio of their efficiencies.</p> <p>So,</p> <p>The ratio of efficiencies of A, B, C, and D = 4 : 5 : 10 : 6</p> <p>Since efficiency and time are inversely proportional:</p> <p>The ratio of time in which A, B, C, and D will finish the work individually</p> <p>= 1/4 : 1/5 : 1/10 : 1/6</p> <p>= 15 : 12 : 6 : 10</p>",
+    "option_1": "<p>6 : 10 : 5 : 4</p>",
+    "option_image_1": "",
+    "option_2": "<p>15 : 12 : 6 : 10</p>",
+    "option_image_2": "",
+    "option_3": "<p>24 : 15 : 30 : 10</p>",
+    "option_image_3": "",
+    "option_4": "<p>5 : 4 : 2 : 3</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 19,
+    "section": "CBT",
+    "question": "<p>Find the difference of total wages received by A and C and total wages received by B and D.</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "4",
+    "correct_answer": "D",
+    "solution": "<p>The correct answer is <strong>option 4</strong> i.e. <strong>Rs. 900.</strong></p> <p>From the pie chart:</p> <p>Required difference = [(16 + 40) - (20 + 24)]/100 × 7500</p> <p>= 12/100 × 75</p> <p>= Rs. 900</p>",
+    "option_1": "<p>Rs. 800</p>",
+    "option_image_1": "",
+    "option_2": "<p>Rs. 850</p>",
+    "option_image_2": "",
+    "option_3": "<p>Rs. 1000</p>",
+    "option_image_3": "",
+    "option_4": "<p>Rs. 900</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 20,
+    "section": "CBT",
+    "question": "<p>The LCM of two consecutive even numbers is 144, find the numbers.</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "1",
+    "correct_answer": "A",
+    "solution": "<p>Correct answer is <strong>Option 1 </strong>i.e. <strong>16 and 18.</strong></p> <p>We know that product of LCM and HCF of two numbers is equal to product of those two numbers.</p> <p>Here, given,</p> <p>LCM = 144</p> <p>and, HCF = 2 (Since both are consecutive even integers)</p> <p>So,</p> <p>Product of numbers = 144(2) = 288</p> <p>going through options,</p> <p>Option 1: 16 × 18 = 288</p> <p>Option 2: 14 × 16 = 224</p> <p>Option 3: 18 × 20 = 360</p> <p>Option 4: 22 × 24 = 528</p> <p>So, the numbers are 16 and 18.</p>",
+    "option_1": "<p>16 and 18</p>",
+    "option_image_1": "",
+    "option_2": "<p>14 and 16</p>",
+    "option_image_2": "",
+    "option_3": "<p>18 and 20</p>",
+    "option_image_3": "",
+    "option_4": "<p>22 and 24</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 21,
+    "section": "CBT",
+    "question": "<p>Which element is fifth to the left of 2nd element from the right end?</p> <p>A ^ R E 4 % D A 3 $ G U * 2 H O & B U 7 @ L # 6 1</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "4",
+    "correct_answer": "D",
+    "solution": "<p>The correct answer is <strong>option 4 </strong>i.e. <strong>U</strong></p> <p>The given series is:</p> <p>A ^ R E 4 % D A 3 $ G U * 2 H O & B U 7 @ L # <strong>6 </strong>1</p> <p>2nd element from the right end: 6</p> <p>A ^ R E 4 % D A 3 $ G U * 2 H O & B <strong>U</strong> 7 @ L #<strong> </strong>6<strong> </strong>1</p> <p>5th element to the left of 6 is U.</p> <p>Hence, the correct answer is <strong>U</strong>.</p>",
+    "option_1": "<p>%</p>",
+    "option_image_1": "",
+    "option_2": "<p>@</p>",
+    "option_image_2": "",
+    "option_3": "<p>D</p>",
+    "option_image_3": "",
+    "option_4": "<p>U</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 22,
+    "section": "CBT",
+    "question": "<p>A boy starts walking from his home in north. He then takes a left turn and then a right turn. Now, he again takes a left turn and then again takes a left turn but this time he walks thrice the distance what he walked before. Before his last left turn he walked an equal distance everytime. In which direction is the Boy's school with respect to his home?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "3",
+    "correct_answer": "C",
+    "solution": "<p>The correct answer is<strong> option 3</strong> i.e.<strong> South West</strong></p> <p>The diagram is as follows:</p> <p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/192024_11_10_14_14_27.5\" style=\"height:251px; width:298px\" /></p> <p>Thus, Boy&#39;s school is in <strong>South West</strong> direction of Boy&#39;s home.</p> <p>Hence, the correct answer is <strong>South West</strong>.</p>",
+    "option_1": "<p>South</p>",
+    "option_image_1": "",
+    "option_2": "<p>South East</p>",
+    "option_image_2": "",
+    "option_3": "<p>South West</p>",
+    "option_image_3": "",
+    "option_4": "<p>West</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 23,
+    "section": "CBT",
+    "question": "<p>If A + B means A is the mother of B;</p> <p>A - B means A is the brother of B;</p> <p>A @ B means A is the son of B;</p> <p>A % B means A is the father of B and</p> <p>A × B means A is the sister of B,</p> <p>How is G related to U?</p> <p>K + L % S × U, U @ L @ G</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "3",
+    "correct_answer": "C",
+    "solution": "<p>The correct answer is <strong>option 3</strong> i.e. <strong>Grandfather.</strong></p> <p>K + L: K is the mother of L</p> <p>L % S: L is the father of S</p> <p>S × U: S is the sister of U</p> <p>U @ L: U is the son of L</p> <p>L @ G: L is the son of G</p> <p>The family tree would be</p> <p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/52024_11_10_13_51_13.5\" style=\"height:130px; width:91px\" /></p> <p>Therefore, G is the grandfather of U.</p> <p>Hence,<strong> </strong>the correct answer is <strong>Grandfather.</strong></p>",
+    "option_1": "<p>Grandmother</p>",
+    "option_image_1": "",
+    "option_2": "<p>Daughter</p>",
+    "option_image_2": "",
+    "option_3": "<p>Grandfather</p>",
+    "option_image_3": "",
+    "option_4": "<p>Son</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 24,
+    "section": "CBT",
+    "question": "<p><strong>Statements:</strong></p> <p>No ground is cricket.</p> <p>All cricket is bat.</p> <p><strong>Conclusions:</strong></p> <p>I. No ground is bat.</p> <p>II. Some bats are ground is a possibility.</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "2",
+    "correct_answer": "B",
+    "solution": "<p>The correct answer is <strong>option 2</strong> i.e.<strong> Only Conclusion II follows.</strong></p> <p>The following figures can be formed from the statements:</p> <p><img alt=\"\" src=\"assets/uploads/ckeditor/Syllogs_Kanika_10-5-23_1.png\" /><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/32024_11_10_13_50_38.5\" style=\"height:78px; width:271px\" /></p> <p><strong>Conclusions:</strong></p> <p>I. No ground is bat: <strong>False </strong>(It is possible but not definite).</p> <p>II. Some bats are ground is a possibility: <strong>True</strong> (There is no direct relation between bat and ground so in case of possibility it is true.)</p> <p>Hence, the correct answer is <strong>Only Conclusion II follows.</strong></p>",
+    "option_1": "<p>Only conclusion I follows</p>",
+    "option_image_1": "",
+    "option_2": "<p>Only conclusion II follows</p>",
+    "option_image_2": "",
+    "option_3": "<p>Both the conclusions I and II follow</p>",
+    "option_image_3": "",
+    "option_4": "<p>Neither conclusion I nor II follows</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 25,
+    "section": "CBT",
+    "question": "<p><strong>Direction: </strong>Read the following statements carefully and decide which of the conclusions can be inferred from the given statements.</p> <p><strong>Statements: </strong></p> <p>I. Only intelligent persons become managers.</p> <p>II. Managers have good pay.</p> <p><strong>Inference:</strong></p> <p>I. All intelligent persons have good pay.</p> <p>II. Persons who are not managers are not intelligent.</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "4",
+    "correct_answer": "D",
+    "solution": "<p>The correct answer is <strong>option 4</strong> i.e. <strong>Neither I nor II can be inferred.</strong></p> <p>Inference I. It is not necessary that all intelligent persons have good pay.</p> <p>Inference II. Persons who are not managers can be intelligent.</p> <p>Hence, the correct answer is <strong>Neither I nor II can be inferred.</strong></p>",
+    "option_1": "<p>Only II can be inferred</p>",
+    "option_image_1": "",
+    "option_2": "<p>Only I can be inferred</p>",
+    "option_image_2": "",
+    "option_3": "<p>Both I and II can be inferred</p>",
+    "option_image_3": "",
+    "option_4": "<p>Neither I nor II can be inferred</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 26,
+    "section": "CBT",
+    "question": "<p><strong>Statement: </strong>Whatever a teacher teaches and explains is considered true by the children. It was observed in a study that the children are influenced by their teachers.</p> <p><strong>Assumption:</strong></p> <p>I. Many children spent their most of the time in school.</p> <p>II. For children, teachers are their role models.</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "2",
+    "correct_answer": "B",
+    "solution": "<p>The correct answer is <strong>option 2 </strong>i.e. <strong>Only assumption II is true.</strong></p> <p>It is not necessary that the children spend most of the time in school, because they remain at their homes as well.</p> <p>So, assumption I is not true.</p> <p>Clearly, children consider their teachers as their models.</p> <p>So, assumption II is true.</p> <p>Hence, the correct answer is <strong>Only assumption II is true.</strong></p>",
+    "option_1": "<p>Only assumption I is true</p>",
+    "option_image_1": "",
+    "option_2": "<p>Only assumption II is true</p>",
+    "option_image_2": "",
+    "option_3": "<p>Neither assumption I nor II is true</p>",
+    "option_image_3": "",
+    "option_4": "<p>Both assumptions I and II are true</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 27,
+    "section": "CBT",
+    "question": "<p><strong>Statement: </strong>Any man who advocates dowry as a tradition, discredits himself and dishonours women.</p> <p><strong>Conclusion:</strong></p> <p>I. Those who take dowry in marriage are condemned by the society.</p> <p>II. Those who do not take dowry respect womanhood.</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "3",
+    "correct_answer": "C",
+    "solution": "<p>The Correct answer is <strong>option 3</strong> i.e. <strong>&#39;Both I and II follow&#39;.</strong></p> <p><strong>Statement: </strong>Any man who advocates dowry as a tradition, discredits himself and dishonours women</p> <p><strong>Conclusion:</strong></p> <p>I. Those who take dowry in marriage are condemned by the society - <strong>True </strong>(This is a clear conclusion because dowry is illegal)</p> <p>II. Those who do not take dowry respect womanhood - <strong>True </strong>(This is clearly being infered from the statement)</p> <p>Hence, the correct answer is <strong>Both I and II follow</strong>.</p>",
+    "option_1": "<p>Only I follows</p>",
+    "option_image_1": "",
+    "option_2": "<p>Only II follows</p>",
+    "option_image_2": "",
+    "option_3": "<p>Both I and II follow</p>",
+    "option_image_3": "",
+    "option_4": "<p>Neither I nor II follows</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 28,
+    "section": "CBT",
+    "question": "<p>In the following question, select the odd number from the given alternatives.</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "3",
+    "correct_answer": "C",
+    "solution": "<p>The correct answer is<strong> option 3 </strong>i.e.<strong> (72 - 262)</strong></p> <p>The pattern followed here is:</p> <p>(26 - 103) &rarr; (26 × 3.5) + 12 = 91 + 12 = 103</p> <p>(44 - 166) &rarr; (44 × 3.5) + 12 = 154 + 12 = 166</p> <p>(18 - 75) &rarr; (18 × 3.5) + 12 = 63 + 12 = 75</p> <p>But, <strong>(72 - 262) </strong>&rarr; (72 × 3.5) + 12 = 252 + 12 = <strong>264 &ne; 262</strong></p>",
+    "option_1": "<p>(26 - 103)</p>",
+    "option_image_1": "",
+    "option_2": "<p>(44 - 166)</p>",
+    "option_image_2": "",
+    "option_3": "<p>(72 - 262)</p>",
+    "option_image_3": "",
+    "option_4": "<p>(18 - 75) </p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 29,
+    "section": "CBT",
+    "question": "<p>Three out of the four given alternatives are alike in some manner. Find the odd one.</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "2",
+    "correct_answer": "B",
+    "solution": "<p>The correct answer is <strong>option 2 </strong>i.e.<strong> dht.</strong></p> <p>In each combination, the middle letter is a vowel b<strong>a</strong>y, g<strong>e</strong>l, m<strong>o</strong>q. Only <strong>dht</strong> is odd in this case.</p> <p>Hence, the correct answer is <strong>dht.</strong></p>",
+    "option_1": "<p>bay</p>",
+    "option_image_1": "",
+    "option_2": "<p>dht</p>",
+    "option_image_2": "",
+    "option_3": "<p>gel</p>",
+    "option_image_3": "",
+    "option_4": "<p>moq</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 30,
+    "section": "CBT",
+    "question": "<p>Find the odd one out:</p> <p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/182024_11_10_14_14_01.png\" style=\"height:88px; width:278px\" /></p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "3",
+    "correct_answer": "C",
+    "solution": "<p>The correct answer is <strong>option 3</strong> i.e.<strong> D</strong></p> <p>In Figures A, B, and C: Two stars are at the opposite side of the diagonal.</p> <p>While in figure D, Both stars are on the same side of the diagonal. </p> <p>Hence, Figure D is the odd one.</p> <p>Hence, the correct answer is <strong>D</strong>.</p>",
+    "option_1": "<p>C</p>",
+    "option_image_1": "",
+    "option_2": "<p>B</p>",
+    "option_image_2": "",
+    "option_3": "<p>D</p>",
+    "option_image_3": "",
+    "option_4": "<p>A</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 31,
+    "section": "CBT",
+    "question": "<p>The given question is followed by information in two statements. You have to find out which statement follows the information and mark your answer accordingly.</p> <p>How is Amarlata related to Hemant?</p> <p><strong>Statements:</strong></p> <p>I. Amarlata is the mother-in-law of Ritesh who is the father of Hemant.</p> <p>II. Hemant is the grandson of Kamal, who is the husband of Amarlata.</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "3",
+    "correct_answer": "C",
+    "solution": "<p>The correct answer is<strong> option 3 i</strong>.e. <strong>The data either in statement I alone or in statement II alone is sufficient to answer the question.</strong></p> <p><strong>From statement I: </strong>Amarlata is the mother-in-law of Ritesh who is the father of Hemant.</p> <p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/112024_11_10_13_58_05.5\" style=\"height:144px; width:179px\" /></p> <p>From the diagram, we can conclude that Amarlata is the grandmother of Hemant. Hence, Statement I alone is sufficient to answer the question.</p> <p><strong>From statement II.</strong> Hemant is the grandson of Kamal, who is the husband of Amarlata.</p> <p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/112024_11_10_13_58_17.6\" style=\"height:158px; width:179px\" /></p> <p>From the diagram, we can conclude that Amarlata is the grandmother of Hemant. Hence, Statement II alone is sufficient to answer the question.</p> <p>Hence, the correct answer is <strong>option 3</strong>.</p>",
+    "option_1": "<p>The data in statement I alone is sufficient to answer the question, while the data in statement II alone is not sufficient to answer the question</p>",
+    "option_image_1": "",
+    "option_2": "<p>The data in statement II alone is sufficient to answer the question, while the data in statement I alone is not sufficient to answer the question</p>",
+    "option_image_2": "",
+    "option_3": "<p>The data either in statement I alone or in statement II alone is sufficient to answer the question</p>",
+    "option_image_3": "",
+    "option_4": "<p>The data in both statements I and II together is not sufficient to answer the question</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 32,
+    "section": "CBT",
+    "question": "<p>Select the number that can replace the question mark (?) in the following series.</p> <p>6, 9, 14, 21, 30, 41, ?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "4",
+    "correct_answer": "D",
+    "solution": "<p>The correct answer is <strong>option 4</strong> i.e.<strong> 54.</strong></p> <p>The logic used here is: </p> <p>6 + 3 = 9,</p> <p>9 + 5 = 14, </p> <p>14 + 7 = 21,</p> <p>21 + 9 = 30, </p> <p>30 + 11 = 41,</p> <p>41 + 13 = <strong>54</strong></p> <p>Hence, the correct answer is <strong>54</strong>.</p>",
+    "option_1": "<p>53</p>",
+    "option_image_1": "",
+    "option_2": "<p>57</p>",
+    "option_image_2": "",
+    "option_3": "<p>49</p>",
+    "option_image_3": "",
+    "option_4": "<p>54</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 33,
+    "section": "CBT",
+    "question": "<p>A series is given with one term missing. Select the correct alternative from the given ones that will complete the series.</p> <p>FPQ, INR, LLS, OJT, ?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "2",
+    "correct_answer": "B",
+    "solution": "<p>The correct answer is <strong>option 2</strong> i.e. <strong>RHU</strong></p> <p>Given series: FPQ, INR, LLS, OJT, ?</p> <p>F + 3 = I, I +3 = L, L + 3 = O, O + 3 = <strong>R</strong></p> <p>P - 2 = N, N - 2 = L, L - 2 = J, J - 2 =<strong> H</strong></p> <p>Q + 1 = R, R + 1 = S, S + 1 = T, T + 1 =<strong> U </strong></p> <p>Hence, the correct answer is<strong> RHU.</strong></p>",
+    "option_1": "<p>UHR</p>",
+    "option_image_1": "",
+    "option_2": "<p>RHU</p>",
+    "option_image_2": "",
+    "option_3": "<p>RIU</p>",
+    "option_image_3": "",
+    "option_4": "<p>QGU</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 34,
+    "section": "CBT",
+    "question": "<p>Figure A is related to B in a certain pattern. Following the same pattern, figure C is related to D. Study the pattern and select the figure that should be placed in place of D</p> <p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/trupti_42024_08_09_16_17_21.PNG\" style=\"height:217px; width:300px\" /></p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "2",
+    "correct_answer": "B",
+    "solution": "<p>The correct answer is <strong>option 2</strong> i.e. <strong>2.</strong></p> <p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/trupti_52024_08_09_16_17_37.PNG\" style=\"height:75px; width:282px\" /></p> <p><strong>Logic: </strong>As many pins are introduced inside the figure as the number of sides of the figure. These pins start from the center of the figure and have their heads pointing toward the sides of the figure.</p> <p>Hence, the correct answer is<strong> 2</strong>.</p>",
+    "option_1": "<p>1</p>",
+    "option_image_1": "",
+    "option_2": "<p>2</p>",
+    "option_image_2": "",
+    "option_3": "<p>3</p>",
+    "option_image_3": "",
+    "option_4": "<p>4</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 35,
+    "section": "CBT",
+    "question": "<p>Select the related word/letters/number from the given alternatives.</p> <p>Ovary : Fruit :: Ovule : </p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "3",
+    "correct_answer": "C",
+    "solution": "<p>The correct answer is <strong>option 3</strong> i.e. <strong>Seed.</strong></p> <p>In plants or trees, in post-reproduction ovary forms fruit.</p> <p>Similarly,</p> <p>Ovules form or change into seeds.</p> <p>Hence, the correct answer is <strong>Seed.</strong></p>",
+    "option_1": "<p>Stem</p>",
+    "option_image_1": "",
+    "option_2": "<p>Root</p>",
+    "option_image_2": "",
+    "option_3": "<p>Seed</p>",
+    "option_image_3": "",
+    "option_4": "<p>Petal</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 36,
+    "section": "CBT",
+    "question": "<p>Which one of the following diagrams indicates the best relation between Travellers, Trains, and Bus?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "1",
+    "correct_answer": "A",
+    "solution": "<p>The correct answer is <strong>option 1</strong><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/132024_11_10_13_59_45.1\" style=\"height:83px; width:82px\" />.</p> <p>The possible Venn diagram is:</p> <p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/132024_11_10_14_00_39.5\" style=\"height:124px; width:181px\" /></p> <p>Some travelers can use the bus. Some travelers can take the train.</p> <p>Hence the correct answer is <strong>option 1.</strong></p>",
+    "option_1": "<p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/132024_11_10_13_59_45.1\" style=\"height:83px; width:82px\" /></p>",
+    "option_image_1": "",
+    "option_2": "<p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/132024_11_10_13_59_59.2\" style=\"height:82px; width:82px\" /></p>",
+    "option_image_2": "",
+    "option_3": "<p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/132024_11_10_14_00_09.3\" style=\"height:81px; width:82px\" /></p>",
+    "option_image_3": "",
+    "option_4": "<p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/132024_11_10_14_00_21.4\" style=\"height:82px; width:82px\" /></p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 37,
+    "section": "CBT",
+    "question": "<p>Select the option that is related to the fifth term in the same way as the second term is related to the first term and the fourth term related to the third term.<br /> 36 : 72 :: 28 : 56 :: 42 : ?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "3",
+    "correct_answer": "C",
+    "solution": "<p>The correct answer is <strong>option 3</strong> i.e. <strong>84.</strong></p> <p><strong>The given series: </strong>36 : 72 :: 28 : 56 :: 42 : ?</p> <p>The logic used here is: </p> <p>(36 ÷ 2 ) × 4 = 72</p> <p>(28 ÷ 2 ) × 4 = 56</p> <p>So, <strong>(42 ÷ 2 ) × 4 = 84</strong></p> <p>Hence, the correct option is <strong>84</strong>.</p>",
+    "option_1": "<p>83</p>",
+    "option_image_1": "",
+    "option_2": "<p>85</p>",
+    "option_image_2": "",
+    "option_3": "<p>84</p>",
+    "option_image_3": "",
+    "option_4": "<p>74</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 38,
+    "section": "CBT",
+    "question": "<p>Select the option that is related to the third word in the same way as the second word is related to the first word. (The words must be considered as meaningful English words and must not be related to each other based on the number of letters/number of consonants/vowels in the word).</p> <p>Ant : Antling :: Deer : ?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "2",
+    "correct_answer": "B",
+    "solution": "<p>The correct answer is <strong>o</strong><strong>ption 2</strong> i.e. <strong>Fawn.</strong></p> <p>As The young one of an ant is called an antling. Similarly, The young one of a deer is called a fawn.</p> <p> </p>",
+    "option_1": "<p>Pup</p>",
+    "option_image_1": "",
+    "option_2": "<p>Fawn</p>",
+    "option_image_2": "",
+    "option_3": "<p>Cub</p>",
+    "option_image_3": "",
+    "option_4": "<p>Foal</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 39,
+    "section": "CBT",
+    "question": "<p>Select the correct mirror image of the gien combination when the mirror is placed at XY as shown.</p> <p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/62024_11_10_13_51_36.png\" style=\"height:104px; width:115px\" /></p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "1",
+    "correct_answer": "A",
+    "solution": "<p>The correct answer is <strong>option 1</strong> i.e. <img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/62024_11_10_13_52_07.1\" style=\"height:24px; width:94px\" />.</p> <p>when the mirror is placed at XY, it will appear as below:</p> <p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/62024_11_10_13_53_08.5\" style=\"height:98px; width:200px\" /></p> <p>Hence, <strong>option 1</strong> is the correct answer.</p>",
+    "option_1": "<p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/62024_11_10_13_52_07.1\" style=\"height:24px; width:94px\" /></p>",
+    "option_image_1": "",
+    "option_2": "<p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/62024_11_10_13_52_29.2\" style=\"height:25px; width:94px\" /></p>",
+    "option_image_2": "",
+    "option_3": "<p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/62024_11_10_13_52_39.3\" style=\"height:25px; width:94px\" /></p>",
+    "option_image_3": "",
+    "option_4": "<p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/62024_11_10_13_52_49.4\" style=\"height:25px; width:94px\" /></p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 40,
+    "section": "CBT",
+    "question": "<p>Select the correct option to complete the following pattern.</p> <p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/142024_11_10_14_01_03.png\" style=\"height:123px; width:121px\" /></p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "1",
+    "correct_answer": "A",
+    "solution": "<p>The correct answer is <strong>option 1. </strong></p> <p>The figure in option 1 will complete the pattern given in the question figure.</p> <p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/142024_11_10_14_02_27.5\" style=\"height:110px; width:300px\" /></p> <p>Hence, the correct answer is <strong>option 1</strong>.</p>",
+    "option_1": "<p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/142024_11_10_14_01_20.1\" style=\"height:117px; width:62px\" /></p>",
+    "option_image_1": "",
+    "option_2": "<p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/142024_11_10_14_01_42.2\" style=\"height:119px; width:62px\" /></p>",
+    "option_image_2": "",
+    "option_3": "<p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/142024_11_10_14_01_51.3\" style=\"height:108px; width:62px\" /></p>",
+    "option_image_3": "",
+    "option_4": "<p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/142024_11_10_14_02_00.4\" style=\"height:64px; width:121px\" /></p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 41,
+    "section": "CBT",
+    "question": "<p>How many rectangles are there in the given figure (given that no possible combination makes a square)?</p> <p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/172024_11_10_14_06_39.png\" style=\"height:90px; width:169px\" /></p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "2",
+    "correct_answer": "B",
+    "solution": "<p>The correct answer is <strong>option 2 </strong>i.e. <strong>45.</strong></p> <p>The total number of rectangles in the question figure is as shown below: </p> <p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/172024_11_10_14_07_16.5\" style=\"height:76px; width:280px\" /></p> <p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/172024_11_10_14_07_32.6\" style=\"height:375px; width:290px\" /></p> <p>These are 24 rectangles.</p> <p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/172024_11_10_14_07_54.7\" style=\"height:100px; width:280px\" /></p> <p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/172024_11_10_14_09_44.8\" style=\"height:73px; width:280px\" /></p> <p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/172024_11_10_14_10_14.9\" style=\"height:97px; width:280px\" /></p> <p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/172024_11_10_14_12_35.94\" style=\"height:73px; width:140px\" /></p> <p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/172024_11_10_14_12_48.91\" style=\"height:77px; width:140px\" /></p> <p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/172024_11_10_14_13_00.92\" style=\"height:72px; width:140px\" /></p> <p>Similarly, 9 rectangles will be in the lower half also.</p> <p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/172024_11_10_14_13_14.93\" style=\"height:77px; width:290px\" /></p> <p>Thus, total number of rectangles = 24 + 9 + 9 + 3 = <strong>45</strong></p> <p>Hence, the correct answer is <strong>45.</strong></p>",
+    "option_1": "<p>42</p>",
+    "option_image_1": "",
+    "option_2": "<p>45</p>",
+    "option_image_2": "",
+    "option_3": "<p>43</p>",
+    "option_image_3": "",
+    "option_4": "<p>47</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 42,
+    "section": "CBT",
+    "question": "<p>Which two numbers and signs should be interchanged to balance the following equation?</p> <p>212 + 45 ÷ 5 - 6 × 78 + 105 = 352</p> <p> </p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "2",
+    "correct_answer": "B",
+    "solution": "<p>The correct answer is <strong>option 2</strong> i.e. <strong>+ and -, 212 and 105</strong></p> <p>Given equation: 212 + 45 ÷ 5 - 6 × 78 + 105 = 352</p> <p><strong>Option 2</strong>: On interchanging <strong>+ and -, 212 and 105</strong></p> <p><strong>⇒ </strong>105 -<strong> </strong>45 ÷ 5 + 6 × 78 - 212 = 352</p> <p>⇒ 105 - 9 + 468 - 212 = 352</p> <p>⇒ 573 - 9 - 212 = 352</p> <p>⇒ 564 - 212 = 352</p> <p>⇒ 352 = 352</p>",
+    "option_1": "<p>+ and ÷, 105 and 6</p>",
+    "option_image_1": "",
+    "option_2": "<p>+ and -, 212 and 105</p>",
+    "option_image_2": "",
+    "option_3": "<p>× and -, 78 and 212</p>",
+    "option_image_3": "",
+    "option_4": "<p>× and ÷, 212 and 105</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 43,
+    "section": "CBT",
+    "question": "<p>If 28th April 2005 is Sunday, what was the day of the week on 28th April 2004?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "2",
+    "correct_answer": "B",
+    "solution": "<p>The correct answer is <strong>option 2 </strong>i.e. <strong>Saturday.</strong></p> <p>The year 2004 is a leap year. So, it has 2 odd days.</p> <p>But, February 2004 is not included because we are calculating from April 2004 to April 2005. Thus, it has 1 odd day only.</p> <p>The day on 28th April 2005 will be 1 day beyond the day on 28th April 2004.</p> <p>28th April 2005 is Sunday.</p> <p>Sunday - 1 = Saturday</p> <p>28th April 2004 is Saturday.</p> <p>Hence the correct answer is <strong>Saturday.</strong></p>",
+    "option_1": "<p>Sunday</p>",
+    "option_image_1": "",
+    "option_2": "<p>Saturday</p>",
+    "option_image_2": "",
+    "option_3": "<p>Monday</p>",
+    "option_image_3": "",
+    "option_4": "<p>Friday</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 44,
+    "section": "CBT",
+    "question": "<p>Study the given pattern carefully and select the number that can replace the question mark (?) in it.</p> <table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" style=\"width:100px\"> <tbody> <tr> <td>25</td> <td>43</td> <td>39</td> </tr> <tr> <td>6</td> <td>4</td> <td>8</td> </tr> <tr> <td>125</td> <td>?</td> <td>211</td> </tr> <tr> <td>275</td> <td>413</td> <td>523</td> </tr> </tbody> </table> <p> </p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "2",
+    "correct_answer": "B",
+    "solution": "<p>The correct answer is <strong>o</strong><strong>ption 2 </strong>i.e. <strong>241</strong></p> <p>The logic used here is:</p> <p>1st column: (25 × 6) + 125 = 150 + 125 = 275</p> <p>3rd column: (39 × 8) + 211 = 312 + 211 = 523</p> <p>2nd column: (43 × 4) + ? = 413</p> <p>⇒ 172 + ? = 413</p> <p>⇒ ? = 413 - 172</p> <p>⇒<strong> 241</strong></p>",
+    "option_1": "<p>134</p>",
+    "option_image_1": "",
+    "option_2": "<p>241</p>",
+    "option_image_2": "",
+    "option_3": "<p>221</p>",
+    "option_image_3": "",
+    "option_4": "<p>178</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 45,
+    "section": "CBT",
+    "question": "<p>In a certain code language, 'STRANDED' is written as 'XYWFSIJI'. How will 'MIGRANT' be written as in that language?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "3",
+    "correct_answer": "C",
+    "solution": "<p>The correct answer is <strong>option 3 </strong>i.e. <strong>RNLWFSY.</strong></p> <p>As, </p> <p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/112024_10_29_01_37_46.5\" style=\"height:128px; width:330px\" /></p> <p>Similarly,</p> <p><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/112024_10_29_01_37_58.6\" style=\"height:136px; width:304px\" /></p> <p>Hence, the correct answer is <strong>RNLWFSY</strong>. </p>",
+    "option_1": "<p>RNLLGTY</p>",
+    "option_image_1": "",
+    "option_2": "<p>KRBWFSY</p>",
+    "option_image_2": "",
+    "option_3": "<p>RNLWFSY</p>",
+    "option_image_3": "",
+    "option_4": "<p>RNLWMGT</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 46,
+    "section": "CBT",
+    "question": "<p>Electron-volt is a unit of ______.</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "1",
+    "correct_answer": "A",
+    "solution": "<p>The correct answer is <strong>option 1</strong> i.e. <strong>Energy.</strong></p> <ul> <li>An Electron-volt is a unit of <strong>energy</strong>.</li> <li>It is commonly used in atomic and nuclear physics, equal to the energy gained by an electron (a charged particle carrying unit electronic charge) when the electrical potential at the electron increases by a volt.</li> </ul>",
+    "option_1": "<p>Energy</p>",
+    "option_image_1": "",
+    "option_2": "<p>Power</p>",
+    "option_image_2": "",
+    "option_3": "<p>Current</p>",
+    "option_image_3": "",
+    "option_4": "<p>Potential difference</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 47,
+    "section": "CBT",
+    "question": "<p>Which of the following has the same dimension as that of linear momentum?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "3",
+    "correct_answer": "C",
+    "solution": "<p>The correct answer is <strong>option 3</strong> i.e.<strong> Impulse.</strong></p> <ul> <li>The dimension of Linear momentum is the same as that of <strong>Impulse.</strong></li> <li>Impulse refers to the force that changes the momentum of a body. On the other hand, linear momentum is defined as the product of the mass(m) of an object and the velocity(v) of the object.</li> </ul>",
+    "option_1": "<p>Work</p>",
+    "option_image_1": "",
+    "option_2": "<p>Energy</p>",
+    "option_image_2": "",
+    "option_3": "<p>Impulse</p>",
+    "option_image_3": "",
+    "option_4": "<p>Stress</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 48,
+    "section": "CBT",
+    "question": "<p>Which of the following is a process in which hot, less dense materials rise upward and are replaced by colder, more dense materials?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "4",
+    "correct_answer": "D",
+    "solution": "<p>The correct answer is <strong>option 4</strong> i.e.<strong> Convection.</strong></p> <ul> <li>Convection is a process in which heat is transferred from a solid surface to a nonsolid, such as air or water.</li> <li>This process involves the motion of the fluid relative to the solid surface and the processes by which heat is transferred across the interface.</li> </ul>",
+    "option_1": "<p>Conduction</p>",
+    "option_image_1": "",
+    "option_2": "<p>Radiation</p>",
+    "option_image_2": "",
+    "option_3": "<p>Condensation</p>",
+    "option_image_3": "",
+    "option_4": "<p>Convection</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 49,
+    "section": "CBT",
+    "question": "<p>Viscose fibre is obtained from ______.</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "2",
+    "correct_answer": "B",
+    "solution": "<p>The correct answer is <strong>option 2</strong> i.e. <strong>Cellulose.</strong></p> <ul> <li>Viscose is a semi-synthetic fibre derived from the<strong> cellulose </strong>or wood pulp from fast-growing, regenerative trees such as eucalyptus, beech, pine, bamboo, soy and sugarcane.</li> <li>Viscose is often touted as a sustainable alternative to cotton or polyester and is popular in the fashion industry as a cheaper and more durable alternative to silk.</li> </ul>",
+    "option_1": "<p>Coal</p>",
+    "option_image_1": "",
+    "option_2": "<p>Cellulose</p>",
+    "option_image_2": "",
+    "option_3": "<p>Oil</p>",
+    "option_image_3": "",
+    "option_4": "<p>Petrochemicals</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 50,
+    "section": "CBT",
+    "question": "<p>Which of the following is another name for Vitamin K1?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "1",
+    "correct_answer": "A",
+    "solution": "<p>The correct answer is <strong>option 1</strong> i.e.<strong> Phylloquinone.</strong></p> <ul> <li>Vitamin K (phylloquinone,) the only form of vitamin K found in plants, functions as an electron carrier in the photosynthetic membranes of the chloroplasts.</li> <li>Vitamin K is used to prevent bleeding in people with blood clotting problems.</li> <li>Vitamin K deficiency bleeding or VKDB, occurs when babies cannot stop bleeding because their blood does not have enough Vitamin K to form a clot.</li> </ul>",
+    "option_1": "<p> Phylloquinone</p>",
+    "option_image_1": "",
+    "option_2": "<p> Nicotinic acid</p>",
+    "option_image_2": "",
+    "option_3": "<p>Thiamine</p>",
+    "option_image_3": "",
+    "option_4": "<p>Riboflavin</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 51,
+    "section": "CBT",
+    "question": "<p>Biological events in plants and animals, such as flowering, leafing, dormancy, reproduction and What is the study of the time of migration etc. called?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "4",
+    "correct_answer": "D",
+    "solution": "<p>The correct answer is <strong>option 4</strong> i.e.<strong> Phenology.</strong></p> <ul> <li>Phenology is defined as the study of the timing of recurring biological events, the causes of their timing with regard to biotic and abiotic forces, and the interrelation among phases of the same or different species.</li> <li>Phenology influences the abundance and distribution of organisms, ecosystem services, food webs, and global cycles of water and carbon.</li> </ul>",
+    "option_1": "<p>Pomology</p>",
+    "option_image_1": "",
+    "option_2": "<p>Lichenology</p>",
+    "option_image_2": "",
+    "option_3": "<p>Synantherology</p>",
+    "option_image_3": "",
+    "option_4": "<p>Phenology</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 52,
+    "section": "CBT",
+    "question": "<p>Who among the following is credited with postulating three laws of planetary motion?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "2",
+    "correct_answer": "B",
+    "solution": "<p>The correct answer is <strong>option 2 </strong>i.e.<strong> Johannes Kepler.</strong></p> <ul> <li><strong>Johannes Kepler </strong>is credited for postulating the three laws of planetary motion. They describe how (1) planets move in elliptical orbits with the Sun as a focus, (2) a planet covers the same area of space in the same amount of time no matter where it is in its orbit, and (3) a planet&rsquo;s orbital period is proportional to the size of its orbit (its semi-major axis).</li> <li>Together, these scientific principles help explain the movements of the planets around the sun in our solar system.</li> </ul>",
+    "option_1": "<p>Isaac Newton</p>",
+    "option_image_1": "",
+    "option_2": "<p>Johannes Kepler</p>",
+    "option_image_2": "",
+    "option_3": "<p>Galileo Galilei</p>",
+    "option_image_3": "",
+    "option_4": "<p>Tycho Brahe</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 53,
+    "section": "CBT",
+    "question": "<p>Halogens have ______ electrons in their outermost shells.</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "4",
+    "correct_answer": "D",
+    "solution": "<p>The correct answer is<strong> option 4 </strong>i.e.<strong> Seven.</strong></p> <ul> <li>The number of electrons present in the outermost shell of halogens is <strong>seven.</strong></li> <li>Halogens belong to the 17th group and lie before inert gases. Some examples of halogens are fluorine and chlorine.</li> </ul>",
+    "option_1": "<p>Six</p>",
+    "option_image_1": "",
+    "option_2": "<p>Eight</p>",
+    "option_image_2": "",
+    "option_3": "<p>Five</p>",
+    "option_image_3": "",
+    "option_4": "<p>Seven</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 54,
+    "section": "CBT",
+    "question": "<p><span style=\"font-size:14px\">Which type of mirror is generally used in the headlight of the vehicle?</span></p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "1",
+    "correct_answer": "A",
+    "solution": "<p><span style=\"font-size:14px\">The correct answer is <strong>option 1</strong> i.e. <strong>Concave Mirror.</strong></span></p> <ul> <li><span style=\"font-size:14px\">A concave Mirror is generally used in the headlight of the vehicle.</span></li> <li><span style=\"font-size:14px\">Because when the bulb of the headlight is placed at the focus of the concave mirror, it allows the light to spread out.</span></li> <li><span style=\"font-size:14px\">The reason behind this is, a concave mirror is a converging mirror as it can concentrate the light ray at a particular point, as opposed to a convex mirror which is a diverging mirror.</span></li> <li><span style=\"font-size:14px\">For the same principle, it is also used in Torch.</span></li> </ul>",
+    "option_1": "<p><span style=\"font-size:14px\">Concave Mirror</span></p>",
+    "option_image_1": "",
+    "option_2": "<p><span style=\"font-size:14px\">Convex Mirror</span></p>",
+    "option_image_2": "",
+    "option_3": "<p><span style=\"font-size:14px\">Spherical Mirror</span></p>",
+    "option_image_3": "",
+    "option_4": "<p><span style=\"font-size:14px\">Plane Mirror</span></p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 55,
+    "section": "CBT",
+    "question": "<p>The chemical formula for limestone is_____.</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "3",
+    "correct_answer": "C",
+    "solution": "<p>The correct answer is <strong>Option 3</strong> i.e. <strong>CaCO<sub>3</sub>.</strong></p> <ul> <li><strong>Limestone</strong> is the common name for the chemical compound calcium carbonate (CaCO<sub>3</sub>). </li> <li>Quick lime is the common name for the chemical compound Calcium Oxide (CaO). </li> <li>Calcium hydroxide (traditionally called slaked lime) is an inorganic compound with the chemical formula Ca(OH)<sub>2</sub>.</li> <li>Lime is used in the civil engineering industry as a Lime mortar.</li> </ul>",
+    "option_1": "<p>CaO<sub>2</sub></p>",
+    "option_image_1": "",
+    "option_2": "<p><span style=\"font-size:14px\">CaO</span></p>",
+    "option_image_2": "",
+    "option_3": "<p><span style=\"font-size:14px\">CaCO<sub>3</sub></span></p>",
+    "option_image_3": "",
+    "option_4": "<p>Ca<sub>2</sub>O<sub>3</sub></p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 56,
+    "section": "CBT",
+    "question": "<p><span style=\"font-size:14px\">Calculate the number of electrons in KNO<sub>3</sub>.</span></p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "2",
+    "correct_answer": "B",
+    "solution": "<p><span style=\"font-size:14px\">The correct answer is <strong>option 2</strong> i.e. <strong>50</strong>.</span></p> <p>To calculate the total number of electrons in KNO3 (potassium nitrate):</p> <ul> <li> <p>Potassium (K) has 1 electron per atom. In KNO3, there is 1 K atom, so electrons from K = 19.</p> </li> <li> <p>Nitrogen (N) has 7 electrons per atom. In KNO3, there is 1 N atom, so electrons from N = 7.</p> </li> <li> <p>Oxygen (O) has 8 electrons per atom. In KNO3, there are 3 O atoms in the nitrate ion (NO3⁻), so electrons from O = 3 × 8 = 24.</p> </li> </ul> <p>Therefore, the total number of electrons in KNO3 is 19 (from K) + 7 (from N) + 24 (from O) = 50 electrons.</p> <p> </p>",
+    "option_1": "<p><span style=\"font-size:14px\">48</span></p>",
+    "option_image_1": "",
+    "option_2": "<p><span style=\"font-size:14px\">50</span></p>",
+    "option_image_2": "",
+    "option_3": "<p><span style=\"font-size:14px\">58</span></p>",
+    "option_image_3": "",
+    "option_4": "<p><span style=\"font-size:14px\">None of these</span></p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 57,
+    "section": "CBT",
+    "question": "<p><span style=\"font-size:14px\">Osteomalacia is a disease caused by the deficiency of __________.</span></p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "2",
+    "correct_answer": "B",
+    "solution": "<p><span style=\"font-size:14px\">The correct answer is <strong>option 2</strong> i.e. <strong>Vitamin D.</strong></span></p> <ul> <li><span style=\"font-size:14px\">Osteomalacia is a disease caused by the deficiency of <strong>Vitamin D.</strong></span></li> <li><span style=\"font-size:14px\">Osteomalacia is a disease in which bones of the body are softened due to lack of <strong>Vitamin D, Phosphate, and Calcium.</strong></span></li> </ul> <p><span style=\"font-size:14px\"><u>Important Vitamins, their Chemical name and Rich source:</u></span></p> <table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" style=\"width:400px\"> <tbody> <tr> <td><span style=\"font-size:14px\"> <strong>Vitamins</strong></span></td> <td><span style=\"font-size:14px\"><strong>Chemical name</strong></span></td> <td><span style=\"font-size:14px\"> <strong>Rich source</strong></span></td> <td><span style=\"font-size:14px\"><strong>Diseases</strong></span></td> </tr> <tr> <td><span style=\"font-size:14px\">Vitamin A</span></td> <td><span style=\"font-size:14px\">Retinol</span></td> <td><span style=\"font-size:14px\">Cod liver oil </span></td> <td><span style=\"font-size:14px\">Night blindness</span></td> </tr> <tr> <td><span style=\"font-size:14px\">Vitamin B1</span></td> <td><span style=\"font-size:14px\">Thiamine</span></td> <td><span style=\"font-size:14px\">Rice Bran</span></td> <td><span style=\"font-size:14px\">Beriberi</span></td> </tr> <tr> <td><span style=\"font-size:14px\">Vitamin B2 </span></td> <td><span style=\"font-size:14px\">Riboflavin</span></td> <td><span style=\"font-size:14px\">Almonds, eggs and Liver</span></td> <td><span style=\"font-size:14px\">Photophobia</span></td> </tr> <tr> <td><span style=\"font-size:14px\">Vitamin B3 </span></td> <td><span style=\"font-size:14px\">Niacin</span></td> <td><span style=\"font-size:14px\">Salmon, Sweet potato</span></td> <td><span style=\"font-size:14px\">Diarrhea, Dermatitis</span></td> </tr> <tr> <td><span style=\"font-size:14px\">Vitamin B5</span></td> <td><span style=\"font-size:14px\">Pantothenic acid</span></td> <td><span style=\"font-size:14px\">Green leafy vegetables</span></td> <td><span style=\"font-size:14px\">Insomnia</span></td> </tr> <tr> <td><span style=\"font-size:14px\">Vitamin B12</span></td> <td><span style=\"font-size:14px\">Cobalamin</span></td> <td><span style=\"font-size:14px\">Fortified cereals, Liver, Salmon, Tuna</span></td> <td><span style=\"font-size:14px\">Anemia</span></td> </tr> <tr> <td><span style=\"font-size:14px\">Vitamin C</span></td> <td><span style=\"font-size:14px\">Ascorbic acid</span></td> <td><span style=\"font-size:14px\">Lemons</span></td> <td><span style=\"font-size:14px\">Scurvy </span></td> </tr> <tr> <td><span style=\"font-size:14px\">Vitamin D<sub>3</sub></span></td> <td><span style=\"font-size:14px\">Cholecalciferol</span></td> <td><span style=\"font-size:14px\">Cod liver oil and Sunlight</span></td> <td><span style=\"font-size:14px\">Rickets</span></td> </tr> <tr> <td><span style=\"font-size:14px\">Vitamin E</span></td> <td><span style=\"font-size:14px\">Tocopherols</span></td> <td><span style=\"font-size:14px\">Wheat germ oil</span></td> <td><span style=\"font-size:14px\">Abetalipoproteinemia</span></td> </tr> <tr> <td><span style=\"font-size:14px\">Vitamin K</span></td> <td><span style=\"font-size:14px\">phylloquinone</span></td> <td><span style=\"font-size:14px\">Alfalfa</span></td> <td><span style=\"font-size:14px\">Excessive bleeding</span></td> </tr> </tbody> </table>",
+    "option_1": "<p><span style=\"font-size:14px\">Vitamin C</span></p>",
+    "option_image_1": "",
+    "option_2": "<p><span style=\"font-size:14px\">Vitamin D</span></p>",
+    "option_image_2": "",
+    "option_3": "<p><span style=\"font-size:14px\">Vitamin K</span></p>",
+    "option_image_3": "",
+    "option_4": "<p><span style=\"font-size:14px\">Vitamin B1</span></p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 58,
+    "section": "CBT",
+    "question": "<p>An ecosystem consists of:</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "2",
+    "correct_answer": "B",
+    "solution": "<p>The correct answer is <strong>option 2 </strong>i.e. <strong>Biotic and abiotic components.</strong></p> <ul> <li>An ecosystem is made up of biotic and abiotic components.</li> <li>The living parts of an ecosystem are called biotic factors.</li> <li>The environmental factors that they interact with are called abiotic factors.</li> </ul>",
+    "option_1": "<p>Chemical and physical components</p>",
+    "option_image_1": "",
+    "option_2": "<p>Biotic and abiotic components</p>",
+    "option_image_2": "",
+    "option_3": "<p>Physical and social components</p>",
+    "option_image_3": "",
+    "option_4": "<p>Biotic and antibiotic components</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 59,
+    "section": "CBT",
+    "question": "<p>Which of the following pair is NOT correctly matched?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "1",
+    "correct_answer": "A",
+    "solution": "<p>The correct answer is <strong>option 1 </strong>i.e.<strong> Magnesium hydroxide-M<sub>g</sub>OH<sub>2</sub>.</strong></p> <ul> <li>Magnesium hydroxide is an inorganic compound.</li> <li>Chemical formula: Mg(OH)<sub>2</sub>.</li> <li>It is a common component of antacids, such as milk of magnesia.</li> </ul>",
+    "option_1": "<p>Magnesium hydroxide-MgOH<sub>2</sub></p>",
+    "option_image_1": "",
+    "option_2": "<p>Sulphuric acid-H<sub>2</sub>SO<sub>4</sub></p>",
+    "option_image_2": "",
+    "option_3": "<p>Ammonium hydroxide-NH<sub>4</sub>OH</p>",
+    "option_image_3": "",
+    "option_4": "<p>Nitric acid-HNO<sub>3</sub></p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 60,
+    "section": "CBT",
+    "question": "<p>The momentum of an object is 50 kg and its mass is 10 kg. What is the velocity of the object?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "4",
+    "correct_answer": "D",
+    "solution": "<p>The correct answer is <strong>option 4,</strong> i.e., <em><strong>5 ms<sup>-1</sup>.</strong></em></p> <table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" style=\"width:400px\"> <tbody> <tr> <td><u><strong>CONCEPT</strong></u></td> <td><u><strong>UNDERSTANDING</strong></u></td> <td><u><strong>APPLICATION</strong></u></td> </tr> <tr> <td> <p>Momentum is the product of the mass and velocity of an object.</p> <p><img alt=\"p = mv\" src=\"https://www.gstatic.com/education/formulas/images_long_sheet/en/momentum.svg\" /></p> <table> <tbody> <tr> <td><img alt=\"p\" src=\"https://www.gstatic.com/education/formulas/images_long_sheet/en/momentum_p.svg\" /></td> <td>=</td> <td>momentum</td> </tr> <tr> <td><img alt=\"m\" src=\"https://www.gstatic.com/education/formulas/images_long_sheet/en/momentum_m.svg\" /></td> <td>=</td> <td>mass</td> </tr> <tr> <td><img alt=\"v\" src=\"https://www.gstatic.com/education/formulas/images_long_sheet/en/momentum_v.svg\" /></td> <td>=</td> <td>velocity</td> </tr> </tbody> </table> </td> <td> <p>To find: Velocity</p> <p>Given: </p> <ul> <li>Momentum = 50 kg.ms<sup>-1</sup></li> <li>Mass = 10 kg</li> </ul> </td> <td><img alt=\"\" src=\"https://hranker.com/admin/assets/uploads/ckeditor/PREVIOUS YEAR QUES_6 DEC_GROUP D_2.png\" style=\"height:150px; width:209px\" /></td> </tr> </tbody> </table> <p> </p>",
+    "option_1": "<p>5 ms<sup>-2</sup></p>",
+    "option_image_1": "",
+    "option_2": "<p>0.5 ms<sup>-2</sup></p>",
+    "option_image_2": "",
+    "option_3": "<p>0.5 ms<sup>2</sup></p>",
+    "option_image_3": "",
+    "option_4": "<p>5 ms<sup>-1</sup></p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 61,
+    "section": "CBT",
+    "question": "<p><span style=\"font-size:14px\">Which of the following material has the fastest speed of Sound?</span></p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "3",
+    "correct_answer": "C",
+    "solution": "<p><span style=\"font-size:14px\">The correct answer is<strong> option 3</strong> i.e. <strong>Berylium</strong>.</span></p> <ul> <li><span style=\"font-size:14px\">The speed of sound is fastest in <strong>Berylium.</strong></span></li> <li><span style=\"font-size:14px\">The speed of sound is the distance traveled by sound per unit of time.</span></li> <li><span style=\"font-size:14px\">The speed of sound in air is 343 meters per second.</span></li> </ul> <table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" style=\"width:300px\"> <tbody> <tr> <td><span style=\"font-size:14px\"><strong>Material</strong></span></td> <td><span style=\"font-size:14px\"><strong>Speed of sound(m/s)</strong></span></td> </tr> <tr> <td><span style=\"font-size:14px\">Steel</span></td> <td><span style=\"font-size:14px\">5000 - 6000</span></td> </tr> <tr> <td><span style=\"font-size:14px\">Aluminum</span></td> <td><span style=\"font-size:14px\">6200 - 6800</span></td> </tr> <tr> <td><span style=\"font-size:14px\">Beryllium</span></td> <td><span style=\"font-size:14px\">12500 - 13000</span></td> </tr> <tr> <td><span style=\"font-size:14px\">Titanium</span></td> <td><span style=\"font-size:14px\">5500 - 6000</span></td> </tr> </tbody> </table>",
+    "option_1": "<p><span style=\"font-size:14px\">Steel</span></p>",
+    "option_image_1": "",
+    "option_2": "<p><span style=\"font-size:14px\">Aluminum</span></p>",
+    "option_image_2": "",
+    "option_3": "<p><span style=\"font-size:14px\">Beryllium</span></p>",
+    "option_image_3": "",
+    "option_4": "<p><span style=\"font-size:14px\">Titanium</span></p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 62,
+    "section": "CBT",
+    "question": "<p>The process of ________ is used to increase the shelf life of milk by destroying disease-causing microorganisms.</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "1",
+    "correct_answer": "A",
+    "solution": "<p>The correct answer is <strong>option 1 </strong>i.e. <strong>pasteurisation.</strong></p> <p>The process of pasteurization is used to increase the shelf life of milk by destroying disease-causing microorganisms. In this process, milk is heated to a specific temperature (usually around 72°C to 75°C) for a short period, then rapidly cooled. This technique kills harmful bacteria such as E. coli, Salmonella, and Listeria without significantly affecting the milk&#39;s nutritional content. Pasteurization ensures that milk is safe for consumption and extends its shelf life by reducing microbial spoilage, thereby maintaining its quality and freshness for longer periods.</p>",
+    "option_1": "<p>pasteurisation</p>",
+    "option_image_1": "",
+    "option_2": "<p>evaporation</p>",
+    "option_image_2": "",
+    "option_3": "<p>condensation</p>",
+    "option_image_3": "",
+    "option_4": "<p>hydrogenation</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 63,
+    "section": "CBT",
+    "question": "<p><span style=\"font-size:14px\">Which of the following enzymes helps to digests the fat?</span></p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "2",
+    "correct_answer": "B",
+    "solution": "<p><span style=\"font-size:14px\">The correct answer is <strong>option 2 </strong>i.e.<strong> Lipase</strong>.</span></p> <ul> <li><span style=\"font-size:14px\">Lipase helps to digests the fat.</span></li> <li><span style=\"font-size:14px\">It break fat into fatty acids and glycerol.</span></li> </ul> <table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" style=\"width:350px\"> <tbody> <tr> <td><strong><span style=\"font-size:14px\">Enzymes</span></strong></td> <td><strong><span style=\"font-size:14px\">Functions</span></strong></td> </tr> <tr> <td><span style=\"font-size:14px\">Amylase</span></td> <td><span style=\"font-size:14px\">breaks starch and sugars into simple sugars such as glucose.</span></td> </tr> <tr> <td><span style=\"font-size:14px\">Lipase</span></td> <td><span style=\"font-size:14px\">breaks fat into fatty acids and glycerol</span></td> </tr> <tr> <td><span style=\"font-size:14px\">Maltase</span></td> <td><span style=\"font-size:14px\">converts maltose into glucose</span></td> </tr> <tr> <td><span style=\"font-size:14px\">Lactase</span></td> <td><span style=\"font-size:14px\">breaks lactose into glucose and galactose</span></td> </tr> </tbody> </table>",
+    "option_1": "<p><span style=\"font-size:14px\">Amylase</span></p>",
+    "option_image_1": "",
+    "option_2": "<p><span style=\"font-size:14px\">Lipase </span></p>",
+    "option_image_2": "",
+    "option_3": "<p><span style=\"font-size:14px\">Maltase</span></p>",
+    "option_image_3": "",
+    "option_4": "<p><span style=\"font-size:14px\">Lactase</span></p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 64,
+    "section": "CBT",
+    "question": "<p>The potential energy (P.E.) of a body at a certain height is 200 J. The kinetic energy possessed by it when it just touches the surface of the earth is:</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "2",
+    "correct_answer": "B",
+    "solution": "<p>The correct answer is <strong>option 2</strong> i.e. <strong>= P.E</strong><em>.</em></p> <p>When answering these questions, keep in mind the law of Conservation of Energy.</p> <p>We know that energy cannot be created nor destroyed - therefore it will still be 200J when it hits the ground</p> <p>When GPE Increases = KE Decreases</p> <p>When GPE Decreases = KE Increase</p> <p>Assuming a vacuum and no drag, the KE upon hitting the ground is exactly the same as the PE from the height at which it was dropped.</p> <p>This is because the process of falling converts the PE into KE.</p> <p>So, KE = 200J</p>",
+    "option_1": "<p>zero</p>",
+    "option_image_1": "",
+    "option_2": "<p>= P.E.</p>",
+    "option_image_2": "",
+    "option_3": "<p>< P.E.</p>",
+    "option_image_3": "",
+    "option_4": "<p>> P.E.</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 65,
+    "section": "CBT",
+    "question": "<p>The time period of a vibrating body is 0.05 s. The frequency of waves it emits will be:</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "2",
+    "correct_answer": "B",
+    "solution": "<p>The correct answer is <strong>option 2</strong> i.e. <strong>20 Hz</strong><em><strong>.</strong></em></p> <p>We know that:</p> <p>frequency = 1/time period</p> <p> = 1/0.05</p> <p> = 20 hz</p>",
+    "option_1": "<p>200 Hz</p>",
+    "option_image_1": "",
+    "option_2": "<p>20 Hz</p>",
+    "option_image_2": "",
+    "option_3": "<p>2 Hz</p>",
+    "option_image_3": "",
+    "option_4": "<p>5 Hz</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 66,
+    "section": "CBT",
+    "question": "<p>Lebanon shares its borders with which body of water?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "3",
+    "correct_answer": "C",
+    "solution": "<p>The correct answer is<strong> option 3 </strong>i.e. <strong>Mediterranean Sea.</strong></p> <p>The EU has pledged $1 billion in aid to Lebanon to address illegal migration, emphasising socio-economic stability and border management. Lebanon&#39;s economic collapse has amplified migration challenges. Situated on the eastern coast of the Mediterranean Sea, Lebanon is a small sovereign nation with a narrow landmass. Beirut is the country&#39;s capital city.</p>",
+    "option_1": "<p>Red Sea</p>",
+    "option_image_1": "",
+    "option_2": "<p>Caspian Sea</p>",
+    "option_image_2": "",
+    "option_3": "<p>Mediterranean Sea</p>",
+    "option_image_3": "",
+    "option_4": "<p>Black Sea</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 67,
+    "section": "CBT",
+    "question": "<p>__________ in Madhya Pradesh has been chosen as the second site for Cheetah reintroduction in India.</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "4",
+    "correct_answer": "D",
+    "solution": "<p>The correct answer is<strong> option 4 </strong>i.e. <strong>Gandhi Sagar Wildlife Sanctuary.</strong></p> <p>India is set to welcome a delegation from Kenya to discuss the possibility of sourcing cheetahs for Project Cheetah. The Cheetah Reintroduction Project aims to reintroduce African cheetahs into India, starting at Kuno National Park. Led by the NTCA and Madhya Pradesh Forest Department, Cheetahs were translocated from South Africa and Namibia. The Gandhi Sagar Wildlife Sanctuary in Madhya Pradesh has been chosen as the second site for cheetah reintroduction, with Kenya being the preferred source due to health concerns with cheetahs from South Africa.</p>",
+    "option_1": "<p>Bandhavgarh National Park</p>",
+    "option_image_1": "",
+    "option_2": "<p>Nauradehi Wildlife Sanctuary</p>",
+    "option_image_2": "",
+    "option_3": "<p>Kanha National Park</p>",
+    "option_image_3": "",
+    "option_4": "<p>Gandhi Sagar Wildlife Sanctuary</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 68,
+    "section": "CBT",
+    "question": "<p>The book Titled \"A Commentary and Digest on the Air, Act 1981\" was written by ................</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "1",
+    "correct_answer": "A",
+    "solution": "<p>The correct answer is <strong>option 1</strong> i.e. <strong>Dr. K. K. Khandelwal.</strong></p> <p>The book titled &quot;A Commentary and Digest on the Air, Act 1981&quot; is authored by K.K. Khandelwal. This detailed work provides an exhaustive analysis of the Air (Prevention and Control of Pollution) Act, 1981, which is a significant environmental legislation in India designed to combat air pollution. K.K. Khandelwal&#39;s commentary serves as an essential resource for legal practitioners, environmentalists, and scholars focusing on environmental law and policy in India.</p>",
+    "option_1": "<p>Dr. K. K. Khandelwal</p>",
+    "option_image_1": "",
+    "option_2": "<p>Stephen King</p>",
+    "option_image_2": "",
+    "option_3": "<p>Vikram Seth</p>",
+    "option_image_3": "",
+    "option_4": "<p>Amitav Ghosh</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 69,
+    "section": "CBT",
+    "question": "<p>Indian athlete Gagan Narang is associated with which of the following sports?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "2",
+    "correct_answer": "B",
+    "solution": "<p>The correct option is <strong>option 2 </strong>i.e.<strong> Shooting.</strong></p> <p>Indian athlete Gagan Narang is associated with shooting. He is renowned for his achievements in rifle shooting, representing India in various international competitions. Narang has won multiple medals in the Commonwealth Games, Asian Games, and the Olympics. His notable accomplishments include a bronze medal in the 10m Air Rifle event at the 2012 London Olympics. Gagan Narang&#39;s contributions have significantly elevated India&#39;s presence in the sport of shooting on the global stage.</p>",
+    "option_1": "<p>Archery</p>",
+    "option_image_1": "",
+    "option_2": "<p>Shooting</p>",
+    "option_image_2": "",
+    "option_3": "<p>Wrestling</p>",
+    "option_image_3": "",
+    "option_4": "<p>Badmintom</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 70,
+    "section": "CBT",
+    "question": "<p>Which among the following Articles of the Indian Constitution includes \"Provisions on Constitutional Amendment\"?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "2",
+    "correct_answer": "B",
+    "solution": "<p>The correct answer is <strong>option 2 </strong>i.e. <strong>Article 368</strong>.</p> <ul> <li><strong>Article 368 </strong>provides for the procedure of amendment of the Constitution. </li> <li>Article 169 talks about the Abolition of the creation of Legislative Councils in the states.</li> <li>Article 110 deals with Money Bills.</li> <li>Article 112 deals with Annual Financial Statement.</li> </ul>",
+    "option_1": "<p>Article 169</p>",
+    "option_image_1": "",
+    "option_2": "<p>Article 368</p>",
+    "option_image_2": "",
+    "option_3": "<p>Article 110</p>",
+    "option_image_3": "",
+    "option_4": "<p>Article 112</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 71,
+    "section": "CBT",
+    "question": "<p>Which among the following subjects, does Article 280 of the Indian Constitution include?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "1",
+    "correct_answer": "A",
+    "solution": "<p>The correct answer is <strong>option 1</strong> i.e. <strong>Provision of Finance Commission</strong>.</p> <ul> <li>A constitutional authority known as the Finance Commission is responsible for allocating specific revenue resources between the Union Government and the State Governments.</li> <li>It was created by the Indian President by Article 280 of the Indian Constitution. It was developed to lay forth the terms of the Center&#39;s and the States&#39; financial dealings.</li> </ul>",
+    "option_1": "<p>Provision of Finance Commission</p>",
+    "option_image_1": "",
+    "option_2": "<p>Abolition or creation of Legislative Councils in the states</p>",
+    "option_image_2": "",
+    "option_3": "<p>Annual Financial Statement</p>",
+    "option_image_3": "",
+    "option_4": "<p>Constitutional Amendment</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 72,
+    "section": "CBT",
+    "question": "<p><span style=\"font-size:14px\">Glacier-deposited soil is called______?</span></p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "2",
+    "correct_answer": "B",
+    "solution": "<p><span style=\"font-size:14px\">The correct answer is <strong>option 2</strong> i.e.<strong>Till.</strong></span></p> <ul> <li><span style=\"font-size:14px\">Glacier-deposited soil is called <strong>Till and Moraines.</strong></span></li> <li><span style=\"font-size:14px\"><strong>Glacier:</strong> A glacier is a huge mass of ice that moves over the land surface.</span></li> <li><span style=\"font-size:14px\">A glacial deposition is the settling of solid material left behind by a moving glacier.</span> <ul> <li><span style=\"font-size:14px\"><strong>Glaciar Drift</strong>: Material that is transported and deposited by a glacier is known as Glacial Drift.</span></li> <li><span style=\"font-size:14px\"><strong>Glacial Till: </strong>Material deposited by a glacier is known as Glacial Till.</span></li> <li><span style=\"font-size:14px\"><strong>Glaciar Talus: A </strong>Glacial Talus is a structure of land in which debris piles up to a characteristic angle of repose.</span></li> <li><span style=\"font-size:14px\"><strong>Loess: </strong>Loess is sediment that is formed by the accumulation of wind dust.</span></li> </ul> </li> </ul>",
+    "option_1": "<p><span style=\"font-size:14px\">Drift</span></p>",
+    "option_image_1": "",
+    "option_2": "<p><span style=\"font-size:14px\">Till</span></p>",
+    "option_image_2": "",
+    "option_3": "<p><span style=\"font-size:14px\">Loess</span></p>",
+    "option_image_3": "",
+    "option_4": "<p><span style=\"font-size:14px\">Talus</span></p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 73,
+    "section": "CBT",
+    "question": "<p>'Chariot festival' is celebrated in which of the following states?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "2",
+    "correct_answer": "B",
+    "solution": "<p>The correct answer is <strong>option 2</strong> i.e. <strong>Tamil Nadu</strong>.</p> <ul> <li>The &#39;Chariot festival&#39; is observed at the Suchindram Thanumalayan Temple in Tamil Nadu.</li> <li>The Suchindram Thanumalayan Temple stands as the most southerly significant temple in Tamil Nadu.</li> <li>Notably, the temple holds immense importance as it is revered by both Shaivite and Vaishnavite communities.</li> <li>Dating back to the 17th century, this temple is renowned for its majestic architectural design.</li> <li>Within the temple premises, there exists a colossal 22-foot-tall Anjaneya statue, meticulously carved out of a single granite block, purportedly one of India&#39;s tallest statues of its kind.</li> </ul> <p> </p>",
+    "option_1": "<p>Kerala</p>",
+    "option_image_1": "",
+    "option_2": "<p>Tamil Nadu</p>",
+    "option_image_2": "",
+    "option_3": "<p>Andhra Pradesh</p>",
+    "option_image_3": "",
+    "option_4": "<p>Madhya Pradesh</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 74,
+    "section": "CBT",
+    "question": "<p><span style=\"font-size:14px\">Which Governor General was credited with the initiation of the policy of 'Paramountcy'?</span></p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "4",
+    "correct_answer": "D",
+    "solution": "<p><span style=\"font-size:14px\">The correct answer is <strong>option 4</strong> i.e. <strong>Lord Hastings</strong>.</span></p> <p>The policy of &#39;Paramountcy&#39; in British India was initiated by Lord Hastings, who served as the Governor-General from 1813 to 1823. This policy asserted British dominance over Indian princely states, establishing British supremacy and requiring these states to accept British suzerainty. It marked a significant shift in British-Indian relations, ensuring that the princely states could not engage in foreign or political alliances without British approval. Lord Hastings&#39; tenure is thus credited with laying the foundation of British paramountcy in India.</p> <p> </p> <p> </p> <p> </p> <p> </p>",
+    "option_1": "<p><span style=\"font-size:14px\">Lord Williamson</span></p>",
+    "option_image_1": "",
+    "option_2": "<p><span style=\"font-size:14px\">Lord Clive</span></p>",
+    "option_image_2": "",
+    "option_3": "<p><span style=\"font-size:14px\">Lord Richardson</span></p>",
+    "option_image_3": "",
+    "option_4": "<p><span style=\"font-size:14px\">Lord Hastings</span></p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  },
+  {
+    "question_no": 75,
+    "section": "CBT",
+    "question": "<p>How long did the Khilji dynasty rule in the Delhi Sultanate?</p>",
+    "positive_marks": "1",
+    "negative_marks": "0",
+    "answer": "2",
+    "correct_answer": "B",
+    "solution": "<p>The correct answer is <strong>option 2</strong> i.e. <strong>1290 - 1320 AD.</strong></p> <p>The Khilji dynasty ruled the Delhi Sultanate from 1290 to 1320, marking a 30-year reign. Founded by Jalal-ud-din Khilji, the dynasty is notable for its military conquests and administrative reforms. His successor, Alauddin Khilji, expanded the empire significantly and implemented various economic and market control policies. The Khilji dynasty&#39;s rule ended when the Tughlaq dynasty succeeded them. Despite their relatively short reign, the Khiljis left a lasting impact on the Delhi Sultanate&#39;s history and administration.</p> <p> </p> <p> </p> <p> </p> <p> </p>",
+    "option_1": "<p>1206 - 1290 AD</p>",
+    "option_image_1": "",
+    "option_2": "<p>1290 - 1320 AD</p>",
+    "option_image_2": "",
+    "option_3": "<p>1320 - 1412 AD</p>",
+    "option_image_3": "",
+    "option_4": "<p>1414 - 1450 AD</p>",
+    "option_image_4": "",
+    "option_5": "",
+    "option_image_5": "",
+    "option_6": "",
+    "option_image_6": "",
+    "option_7": "",
+    "option_image_7": "",
+    "option_8": "",
+    "option_image_8": "",
+    "option_9": "",
+    "option_image_9": "",
+    "option_10": "",
+    "option_image_10": ""
+  }
+];
+        const totalTime = 60 * 60; // Convert minutes to seconds
+        
+        // Initialize the test
+        window.onload = function() {
+            document.getElementById('total-questions').textContent = questions.length;
+            let totalMarks = questions.reduce((sum, q) => sum + parseFloat(q.positive_marks || 0), 0);
+            document.getElementById('total-marks').textContent = totalMarks;
+            generateQuestionsGrid();
+            
+            setTimeout(() => {
+                new bootstrap.Modal(document.getElementById('joinChannelModal')).show();
+            }, 2000);
+        };
+
+        function startTest() {
+            if (!testStarted) {
+                testStarted = true;
+                startTime = new Date();
+                endTime = new Date(startTime.getTime() + totalTime * 1000);
+                document.getElementById('welcome-screen').style.display = 'none';
+                document.getElementById('test-content').style.display = 'block';
+                document.getElementById('bottom-nav').style.display = 'flex';
+                document.getElementById('pre-test-actions').style.display = 'none';
+                document.getElementById('test-actions').style.display = 'flex';
+                showQuestion(0);
+                startTimer();
+            }
+        }
+
+        function showQuestion(index) {
+            try {
+                if (index < 0 || index >= questions.length) return;
+                
+                currentQuestion = index;
+                const question = questions[index];
+                
+                // Create question HTML first
+                const questionHTML = `
+                    <div class="question-header">
+                        <div class="question-number">
+                            <i class="fas fa-pencil-alt"></i>
+                            Question ${index + 1} of ${questions.length}
+                        </div>
+                        <div class="question-status" id="question-status"></div>
+                    </div>
+                    <div class="question-box">${question.question}</div>
+                    <div class="options-container">
+                        ${generateOptionsHtml(question, index)}
+                    </div>
+                `;
+                
+                // Update question container with animation
+                const container = document.querySelector('.question-card');
+                if (!container) {
+                    console.error('Question container not found');
+                    return;
+                }
+                
+                // Update stats elements if they exist
+                const currentQuestionEl = document.getElementById('current-question');
+                const totalQuestionsEl = document.getElementById('total-questions');
+                
+                if (currentQuestionEl) currentQuestionEl.textContent = index + 1;
+                if (totalQuestionsEl) totalQuestionsEl.textContent = questions.length;
+                
+                // Animate container
+                container.style.opacity = '0';
+                container.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    container.innerHTML = questionHTML;
+                    container.style.opacity = '1';
+                    container.style.transform = 'translateY(0)';
+                    
+                    // Update status after new content is added
+                    updateQuestionStatus();
+                    updateNavigationButtons();
+                    updateQuestionsGrid();
+                    updateMiniStats();
+                }, 300);
+                
+            } catch (error) {
+                console.error('Error in showQuestion:', error);
+            }
+        }
+
+        function generateOptionsHtml(question, qIndex) {
+            let options = [];
+            for (let i = 1; i <= 10; i++) {
+                let optionKey = `option_${i}`;
+                let optionImageKey = `option_image_${i}`;
+                if (question[optionKey] && question[optionKey].trim()) {
+                    options.push({
+                        text: question[optionKey],
+                        image: question[optionImageKey] || ''
+                    });
+                }
+            }
+            
+            const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+            return options.map((option, index) => `
+                <div class="option-card ${answers[qIndex] === index ? 'selected' : ''}" 
+                    onclick="selectAnswer(${qIndex}, ${index})"
+                    data-option="${letters[index]}">
+                    ${option.text}
+                    ${option.image ? `<img src="${option.image}" class="img-fluid mt-2">` : ''}
+                </div>
+            `).join('');
+        }
+
+        function selectAnswer(qIndex, optionIndex) {
+            if (submitted) return; // Don't allow changes after submission
+            
+            answers[qIndex] = optionIndex;
+            
+            // Update option styling
+            const options = document.querySelectorAll('.option-card');
+            options.forEach((option, idx) => {
+                if (idx === optionIndex) {
+                    option.classList.add('selected');
+                } else {
+                    option.classList.remove('selected');
+                }
+            });
+            
+            updateQuestionStatus();
+            updateQuestionsGrid();
+            updateMiniStats();
+        }
+
+        function updateMiniStats() {
+            try {
+                const total = questions.length;
+                const attempted = Object.keys(answers).length;
+                const marked = Object.keys(markedForReview).length;
+                const unattempted = total - attempted;
+                
+                const miniTotalEl = document.getElementById('mini-total');
+                const miniAttemptedEl = document.getElementById('mini-attempted');
+                const miniSkippedEl = document.getElementById('mini-skipped');
+                
+                if (miniTotalEl) miniTotalEl.textContent = `${currentQuestion + 1}/${total}`;
+                if (miniAttemptedEl) miniAttemptedEl.textContent = attempted;
+                if (miniSkippedEl) miniSkippedEl.textContent = unattempted;
+            } catch (error) {
+                console.error('Error in updateMiniStats:', error);
+            }
+        }
+
+        function updateQuestionStatus() {
+            try {
+                const statusElement = document.getElementById('question-status');
+                if (!statusElement) return;
+                
+                if (answers[currentQuestion] !== undefined) {
+                    statusElement.className = 'question-status bg-success text-white';
+                    statusElement.innerHTML = '<i class="fas fa-check me-2"></i>Attempted';
+                } else if (markedForReview[currentQuestion]) {
+                    statusElement.className = 'question-status bg-warning text-white';
+                    statusElement.innerHTML = '<i class="fas fa-bookmark me-2"></i>Marked for Review';
+                } else {
+                    statusElement.className = 'question-status bg-danger text-white';
+                    statusElement.innerHTML = '<i class="fas fa-times me-2"></i>Not Attempted';
+                }
+            } catch (error) {
+                console.error('Error in updateQuestionStatus:', error);
+            }
+        }
+
+        function updateNavigationButtons() {
+            try {
+                const prevBtn = document.getElementById('prev-btn');
+                const nextBtn = document.getElementById('next-btn');
+                
+                if (prevBtn) prevBtn.disabled = currentQuestion === 0;
+                if (nextBtn) nextBtn.disabled = currentQuestion === questions.length - 1;
+            } catch (error) {
+                console.error('Error in updateNavigationButtons:', error);
+            }
+        }
+
+        function generateQuestionsGrid() {
+            try {
+                const grid = document.getElementById('questions-grid');
+                if (!grid) return;
+                
+                grid.innerHTML = questions.map((_, index) => `
+                    <button class="grid-btn ${getQuestionButtonClass(index)}" 
+                            onclick="showQuestion(${index})"
+                            type="button">
+                        ${index + 1}
+                    </button>
+                `).join('');
+            } catch (error) {
+                console.error('Error in generateQuestionsGrid:', error);
+            }
+        }
+
+        function getQuestionButtonClass(index) {
+            if (index === currentQuestion) return 'active';
+            if (answers[index] !== undefined) return 'answered';
+            if (markedForReview[index]) return 'marked';
+            return '';
+        }
+
+        function updateQuestionsGrid() {
+            try {
+                const grid = document.getElementById('questions-grid');
+                if (!grid) return;
+                
+                const buttons = grid.querySelectorAll('.grid-btn');
+                buttons.forEach((btn, index) => {
+                    btn.className = `grid-btn ${getQuestionButtonClass(index)}`;
+                });
+            } catch (error) {
+                console.error('Error in updateQuestionsGrid:', error);
+            }
+        }
+
+        function markForReview() {
+            if (submitted) return; // Don't allow changes after submission
+            
+            markedForReview[currentQuestion] = !markedForReview[currentQuestion];
+            updateQuestionStatus();
+            updateQuestionsGrid();
+        }
+
+        function nextQuestion() {
+            try {
+                if (currentQuestion < questions.length - 1) {
+                    showQuestion(currentQuestion + 1);
+                }
+            } catch (error) {
+                console.error('Error in nextQuestion:', error);
+            }
+        }
+
+        function prevQuestion() {
+            try {
+                if (currentQuestion > 0) {
+                    showQuestion(currentQuestion - 1);
+                }
+            } catch (error) {
+                console.error('Error in prevQuestion:', error);
+            }
+        }
+
+        function startTimer() {
+            const timerElement = document.getElementById('timer');
+            const timerInterval = setInterval(() => {
+                if (!testStarted || submitted) {
+                    clearInterval(timerInterval);
+                    return;
+                }
+
+                const now = new Date();
+                const timeLeft = Math.max(0, Math.floor((endTime - now) / 1000));
+                
+                if (timeLeft === 0) {
+                    clearInterval(timerInterval);
+                    submitTest();
+                    return;
+                }
+
+                const hours = Math.floor(timeLeft / 3600);
+                const minutes = Math.floor((timeLeft % 3600) / 60);
+                const seconds = timeLeft % 60;
+                
+                timerElement.innerHTML = `
+                    <i class="far fa-clock me-2"></i>
+                    ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}
+                `;
+            }, 1000);
+        }
+
+        function showQuestionsGrid() {
+            try {
+                const modal = document.getElementById('questionsModal');
+                if (!modal) return;
+                
+                // Ensure grid is updated before showing
+                generateQuestionsGrid();
+                new bootstrap.Modal(modal).show();
+            } catch (error) {
+                console.error('Error in showQuestionsGrid:', error);
+            }
+        }
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (!testStarted || submitted) return;
+            
+            switch(e.key) {
+                case 'ArrowLeft':
+                    prevQuestion();
+                    break;
+                case 'ArrowRight':
+                    nextQuestion();
+                    break;
+                case '1': case '2': case '3': case '4':
+                    const optionIndex = parseInt(e.key) - 1;
+                    selectAnswer(currentQuestion, optionIndex);
+                    break;
+            }
+        });
+
+        function submitTest() {
+            if (submitted) return; // Prevent double submission
+
+            if (!confirm('Are you sure you want to submit the test? You cannot change your answers after submission.')) return;
+            
+            submitted = true;
+            testStarted = false;
+            
+            let correct = 0;
+            let incorrect = 0;
+            let totalMarks = 0;
+            let wrongAnswers = [];
+            
+            questions.forEach((q, index) => {
+                if (answers[index] !== undefined) {
+                    let selectedOptionText = q[`option_${answers[index] + 1}`];
+                    let correctOptionText = q[`option_${q.answer}`];
+                    
+                    if (answers[index] === parseInt(q.answer) - 1) {
+                        correct++;
+                        totalMarks += parseFloat(q.positive_marks);
+                    } else {
+                        incorrect++;
+                        totalMarks -= parseFloat(q.negative_marks);
+                        wrongAnswers.push({
+                            questionNum: index + 1,
+                            question: q.question,
+                            yourAnswer: selectedOptionText,
+                            correctAnswer: correctOptionText
+                        });
+                    }
+                }
+            });
+            
+            // Save wrong answers to localStorage
+            localStorage.setItem('wrongAnswers', JSON.stringify(wrongAnswers));
+            
+            const wrongAnswersHtml = wrongAnswers.map(wa => `
+                <div class="wrong-answer-card">
+                    <div class="question-text mb-2">Q${wa.questionNum}. ${wa.question}</div>
+                    <div class="d-flex gap-3">
+                        <div class="wrong-answer">
+                            <i class="fas fa-times-circle text-danger"></i>
+                            Your Answer: Option ${wa.yourAnswer}
+                        </div>
+                        <div class="correct-answer">
+                            <i class="fas fa-check-circle text-success"></i>
+                            Correct Answer: Option ${wa.correctAnswer}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            document.getElementById('test-content').innerHTML = `
+                <div class="score-animation">
+                    <div class="mb-4">
+                        <i class="fas fa-award fa-3x text-primary"></i>
+                    </div>
+                    <div class="score-value">${totalMarks.toFixed(2)}</div>
+                    <div class="h4 mb-4">Your Final Score</div>
+                    
+                    <div class="stats-row">
+                        <div class="stat-item">
+                            <div class="stat-value text-success">${correct}</div>
+                            <div class="stat-label">Correct</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value text-danger">${incorrect}</div>
+                            <div class="stat-label">Incorrect</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value text-warning">${questions.length - (correct + incorrect)}</div>
+                            <div class="stat-label">Skipped</div>
+                        </div>
+                    </div>
+                    
+                    ${incorrect > 0 ? `
+                        <div class="wrong-answers-section mt-4">
+                            <h5 class="mb-3">Review Incorrect Answers</h5>
+                            ${wrongAnswers.map(wa => `
+                                <div class="wrong-answer-card">
+                                    <div class="question-text">
+                                        <strong>Question ${wa.questionNum}:</strong><br>
+                                        ${wa.question}
+                                    </div>
+                                    <div class="answer-details">
+                                        <div class="wrong-answer">
+                                            <i class="fas fa-times-circle"></i>
+                                            <div>
+                                                <strong>Your Answer:</strong><br>
+                                                ${wa.yourAnswer}
+                                            </div>
+                                        </div>
+                                        <div class="correct-answer">
+                                            <i class="fas fa-check-circle"></i>
+                                            <div>
+                                                <strong>Correct Answer:</strong><br>
+                                                ${wa.correctAnswer}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+            document.getElementById('bottom-nav').style.display = 'none';
+        }
+
+        function confirmSubmit() {
+            // Calculate stats
+            const total = questions.length;
+            const attempted = Object.keys(answers).length;
+            const marked = Object.keys(markedForReview).length;
+            const unattempted = total - attempted;
+
+            // Update stats in modal
+            document.getElementById('submit-attempted').textContent = attempted;
+            document.getElementById('submit-marked').textContent = marked;
+            document.getElementById('submit-unattempted').textContent = unattempted;
+
+            // Show modal
+            new bootstrap.Modal(document.getElementById('submitConfirmModal')).show();
+        }
+
+        // Add new function for final submission
+        function finalSubmit() {
+            // Hide modal
+            bootstrap.Modal.getInstance(document.getElementById('submitConfirmModal')).hide();
+            // Submit test
+            submitTest();
+        }
+    </script>
+
+<!-- User Information -->
+<div style="display: none;" id="user-info">
+    <div data-user-id="6876826498"></div>
+    <div data-username=""></div>
+    <div data-first-name="...."></div>
+</div>
+
+</body>
+</html>
